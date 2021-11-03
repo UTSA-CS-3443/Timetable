@@ -3,10 +3,10 @@ package application.model;
 public class Settings 
 {
 	private Boolean isStartUp;
-	private String alarmSound; // Path to audio file; Add default
-	private Boolean isMuted; 
-	private int priorityInterval;
 	private Boolean desktopNotifi;
+	private Boolean isMuted; 
+	private String alarmSound; // Path to audio file; Add default
+	private int priorityInterval;
 	
 	public Settings()
 	{
