@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 
 public class CalendarScreenController implements EventHandler<ActionEvent>
 {
@@ -183,6 +185,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int selectedYear;
 	private String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	private int[] monthDayNums = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private User user;
 	
 	
 	
@@ -225,9 +228,12 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
-		
+		user = new User();
+		user.loadEvents();
+		displayEvents();
 		
 		// Load day panel:
+		displayDayPanel();
 	}
 	
 	public void handle(ActionEvent arg0) // Unused
@@ -295,5 +301,18 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			dateLabels.get(weekCount - 1).get(_DOW - 1).setText("" + (i+1));
 			_DOW++;
 		}
+	}
+	
+	private void displayEvents()
+	{
+		for (int i = 0; i < user.getEvents().size(); i++)
+		{
+			
+		}
+	}
+	
+	private void displayDayPanel()
+	{
+		
 	}
 }
