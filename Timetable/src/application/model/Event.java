@@ -16,12 +16,13 @@ public class Event
 	private Boolean isMissed;
 	private String ID;
 	
-	public Event(Color color, String timeToRemind, Boolean isPriority, String desc)
+	public Event(Color color, String timeToRemind, Boolean isPriority, String desc, ArrayList<String> dates)
 	{
 		this.color = color;
 		this.timeToRemind = timeToRemind;
 		this.isPriority = isPriority;
 		this.desc = desc;
+		this.dates = dates;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();  
 		this.ID = (String) dtf.format(now); // Generates an id which is the time of creation. 

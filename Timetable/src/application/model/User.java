@@ -8,6 +8,7 @@ public class User extends Calendar
 	
 	public User()
 	{
+		super();
 		this.settings = new Settings();
 		this.todo = new TodoList();
 	}
