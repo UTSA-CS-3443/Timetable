@@ -9,7 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.time.LocalDate;
+import java.util.Calendar;
 
 public class CalendarScreenController implements EventHandler<ActionEvent>
 {
@@ -170,6 +170,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private ArrayList<ArrayList<Circle>> dateCircles;
 	
 	private String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+	private int[] monthDayNums = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
 	
 	
@@ -190,10 +191,20 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.add(new ArrayList<Circle>(Arrays.asList(w4d1Circ, w4d2Circ, w4d3Circ, w4d4Circ, w4d5Circ, w4d6Circ, w4d7Circ)));
 		dateCircles.add(new ArrayList<Circle>(Arrays.asList(w5d1Circ, w5d2Circ, w5d3Circ, w5d4Circ, w5d5Circ, w5d6Circ, w5d7Circ)));
 		
-		// Set Calendar to current month:
+		// Set Calendar to current month+year:
 		String[] date = new String[3];
 		date = java.time.LocalDate.now().toString().split("-");
 		monthLabel.setText(monthNames[Integer.valueOf(date[1]) - 1]);
+		yearLabel.setText(date[0]);
+		
+		// Set date labels correctly:
+		
+		// Get current day of week, and calculate first of the month's DOW:
+		int dayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+		int curDay = Integer.valueOf(date[2]);
+		int numDayofMonth = monthDayNums[Integer.valueOf(date[1]) - 1];
+		// TODO check for leapyear
+		
 	}
 	
 	public void handle(ActionEvent arg0) 
