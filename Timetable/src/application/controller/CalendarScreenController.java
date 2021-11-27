@@ -215,9 +215,6 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		
 		// Set date labels correctly:
 		
-		// Get first day of the month's day of the week:
-		Calendar cal = new GregorianCalendar(selectedYear, selectedMonth - 1, 1);
-		int firstDayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
 		// Set calendar to this month:
 		resetLabels();
 		this.setCalendarMonth(selectedMonth, selectedYear);
@@ -227,13 +224,13 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStrokeWidth(2);
 		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStroke(Color.RED);
 		
-		// Show events:
+		// Load and display events:
 		
 		
 		// Load day panel:
 	}
 	
-	public void handle(ActionEvent arg0) 
+	public void handle(ActionEvent arg0) // Unused
 	{
 	}
 	
