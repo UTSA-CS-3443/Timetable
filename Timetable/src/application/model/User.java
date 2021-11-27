@@ -6,9 +6,8 @@ public class User extends Calendar
 	private Settings settings;
 	private TodoList todo;
 	
-	public User(String name)
+	public User()
 	{
-		this.name = name;
 		this.settings = new Settings();
 		this.todo = new TodoList();
 	}

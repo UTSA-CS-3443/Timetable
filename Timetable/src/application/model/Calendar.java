@@ -15,7 +15,7 @@ public abstract class Calendar
 		ArrayList<Event> missedEvents = new ArrayList<Event>();
 		for (int i = 0; i < events.size(); i++)
 		{
-			if (events.get(i).getIsMissed() == true)
+			if (events.get(i).getIsMissed())
 			{
 				missedEvents.add(events.get(i));
 			}
@@ -55,5 +55,19 @@ public abstract class Calendar
 	public void loadEvents()
 	{
 		
+	}
+
+	/**
+	 * @return the events
+	 */
+	public ArrayList<Event> getEvents() {
+		return events;
+	}
+
+	/**
+	 * @param events the events to set
+	 */
+	public void setEvents(ArrayList<Event> events) {
+		this.events = events;
 	}
 }
