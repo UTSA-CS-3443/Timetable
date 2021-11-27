@@ -1,6 +1,6 @@
 package application.model;
 
-public class User 
+public class User extends Calendar
 {
 	private String name;
 	private Settings settings;
