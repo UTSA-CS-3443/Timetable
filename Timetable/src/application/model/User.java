@@ -15,17 +15,17 @@ public class User
 	
 	public void addTodo(String desc)
 	{
-		todo.add(desc);
+		todo.addTodo(desc);
 	}
 	
-	public void removeTodo(String ID)
+	public void removeTodo(int id)
 	{
-		todo.remove(ID);
+		todo.removeTodo(id);
 	}
 	
-	public void updateTodo(String ID, String desc)
+	public void updateTodo(int id, String desc)
 	{
-		todo.update(ID, desc);
+		todo.updateTodo(id, desc);
 	}
 	
 	public void updateSettings(String option, String value)
