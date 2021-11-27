@@ -14,7 +14,7 @@ public class Main extends Application {
 		{
 			AnchorPane root = new AnchorPane();
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation( Main.class.getResource("view/Main.fxml") );
+			loader.setLocation( Main.class.getResource("view/CalendarScreen.fxml") );
 			root = (AnchorPane) loader.load();
 			
 			Scene scene = new Scene (root);
