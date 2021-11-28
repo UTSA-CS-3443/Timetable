@@ -9,14 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 
-
 public class Main extends Application {
 	public static Stage stage; //This was added for the sceneSwitcher method.
 	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) 
+	{
 		try 
 		{
+			stage = primaryStage;
 			SplitPane root = new SplitPane();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation( Main.class.getResource("view/CalendarScreen.fxml") );

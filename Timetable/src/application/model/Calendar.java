@@ -58,8 +58,10 @@ public abstract class Calendar
 	
 	public void loadEvents()
 	{
-		addEvent(Color.RED, "1:0", false, "Test1", new ArrayList<String>( Arrays.asList("2021-11-3|12:00", "2021-11-5|12:00")));
-		addEvent(Color.BLUE, "1:0", false, "Test2", new ArrayList<String>( Arrays.asList("2021-11-20|12:00", "2021-11-30|12:00")));
+		addEvent(Color.RED, "1:0", false, "Feed the Dog.", new ArrayList<String>( Arrays.asList("2021-11-27_12:00", "2021-11-15_12:00")));
+		addEvent(Color.BLUE, "1:0", false, "Make sure to turn in homework.", new ArrayList<String>( Arrays.asList("2021-11-21_12:00", "2021-11-15_12:00")));
+		addEvent(Color.GREEN, "1:0", false, "Test3", new ArrayList<String>( Arrays.asList("2021-10-1_12:00", "2021-11-15_12:00")));
+		addEvent(Color.PURPLE, "1:0", false, "Test4", new ArrayList<String>( Arrays.asList("2021-11-15_12:00", "2021-08-7_12:00", "2021-08-29_12:00")));
 	}
 
 	/**

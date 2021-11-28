@@ -1,22 +1,33 @@
 package application.controller;
 
+import application.model.Event;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 
 
 public class CalendarScreenController implements EventHandler<ActionEvent>
 {
+	private final double CAL_EVENT_REC_HEIGHT = 6.0;
+	private final double TIME_LABEL_START_X = 0.0;
+	private final double TIME_LABEL_START_Y = 45.0;
+	private final double TIME_DESC_GAP = 5.0;
+	private final double DESC_GAP = 30.0;
+	
 	// These are the circles behind the date numbers:
 	@FXML
 	private Circle w1d1Circ;
@@ -178,16 +189,24 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	@FXML
 	private Rectangle leftArrow;
 	
-	private ArrayList<ArrayList<Label>> dateLabels;
-	private ArrayList<ArrayList<Circle>> dateCircles;
-	private int dateSelected;  // NOTE: Base 1
-	private int selectedMonth; // NOTE: Base 1
-	private int selectedYear;
+	@FXML
+	private AnchorPane calendarPane;
+	@FXML
+	private AnchorPane sidePanel;
+	@FXML
+	private Rectangle sidePanelTop;
+	
 	private String[] monthNames = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 	private int[] monthDayNums = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	private ArrayList<ArrayList<Label>> dateLabels;
+	private ArrayList<ArrayList<Circle>> dateCircles;
+	private ArrayList<Rectangle> curCalEvents;
+	private ArrayList<Label> curPanelEvents;
+	private int selectedDay;     // NOTE: Base 1
+	private int firstDayOfMonth; // NOTE: Base 1
+	private int selectedMonth;   // NOTE: Base 1
+	private int selectedYear;
 	private User user;
-	
-	
 	
 	public void initialize()
 	{
@@ -219,21 +238,23 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		// Set date labels correctly:
 		
 		// Set calendar to this month:
-		resetLabels();
+		resetCalDates();
 		this.setCalendarMonth(selectedMonth, selectedYear);
 		
 		// Select currentDate:
-		dateSelected = Integer.valueOf(date[2]);
-		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStrokeWidth(2);
-		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStroke(Color.RED);
+		selectedDay = Integer.valueOf(date[2]);
+		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStrokeWidth(2);
+		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
 		user = new User();
+		curCalEvents = new ArrayList<Rectangle>();
 		user.loadEvents();
-		displayEvents();
+		displayCalEvents();
 		
 		// Load day panel:
-		displayDayPanel();
+		curPanelEvents = new ArrayList<Label>();
+		displayDayPanelEvents();
 	}
 	
 	public void handle(ActionEvent arg0) // Unused
@@ -262,14 +283,72 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			}
 			setCalendarMonth(selectedMonth, selectedYear);
 		}
+		selectedDay = 1;
+		dateCircles.get(0).get(firstDayOfMonth - 1).setStrokeWidth(2);
+		dateCircles.get(0).get(firstDayOfMonth - 1).setStroke(Color.RED);
+		displayCalEvents();
+		displayDayPanelEvents();
 	}
 	
 	public void handleDateSelection(MouseEvent event)
 	{
 		
+		int row = -1;
+		int column = -1;
+		for (int i = 0; i < dateCircles.size(); i++) // Check to see if the object calling this is a circle and get pos:
+		{
+			if (column != -1)
+			{
+				break;
+			}
+			for (int j = 0; j < dateCircles.get(i).size(); j++)
+			{
+				if (dateCircles.get(i).get(j).equals(event.getSource()))
+				{
+					column = j;
+				}
+			}
+			row++;
+		}
+		if (column == -1)
+		{
+			row = -1;
+			for (int i = 0; i < dateLabels.size(); i++) // Check to see if the object calling this is a label and get pos:
+			{
+				if (column != -1)
+				{
+					break;
+				}
+				for (int j = 0; j < dateLabels.get(i).size(); j++)
+				{
+					if (dateLabels.get(i).get(j).equals(event.getSource()))
+					{
+						column = j;
+					}
+				}
+				row++;
+			}
+		}
+		
+		String newSelectedDay = dateLabels.get(row).get(column).getText();
+		if (newSelectedDay != "") // If this is a valid date,
+		{
+			// Revert currently selected date:
+			int selectedColPos = (this.firstDayOfMonth + ((selectedDay % 7) - 1)) % 7;
+			if (selectedColPos == 0)
+			{
+				selectedColPos = 7;
+			}
+			dateCircles.get(((selectedDay + (this.firstDayOfMonth - 2)) / 7)).get(selectedColPos - 1).setStrokeWidth(0);
+			
+			selectedDay = Integer.valueOf(newSelectedDay);
+			dateCircles.get(row).get(column).setStrokeWidth(2);
+			dateCircles.get(row).get(column).setStroke(Color.RED);
+			displayDayPanelEvents();
+		}
 	}
 	
-	private void resetLabels()
+	private void resetCalDates()
 	{
 		for (int i = 0; i < dateLabels.size(); i++)
 		{
@@ -279,6 +358,39 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 				dateCircles.get(i).get(j).setStrokeWidth(0);
 			}
 		}
+		// Select selected day:
+	}
+	
+	private void resetEvents()
+	{
+		for (int i = 0; i < calendarPane.getChildren().size(); i++)
+		{
+			for (int j = 0; j < this.curCalEvents.size(); j++)
+			{
+				if (calendarPane.getChildren().get(i).equals(this.curCalEvents.get(j)))
+				{
+					calendarPane.getChildren().remove(i--);
+					this.curCalEvents.remove(j--);
+				}
+			}
+		}
+		return;
+	}
+	
+	private void resetSidePanelEvents()
+	{
+		for (int i = 0; i < sidePanel.getChildren().size(); i++)
+		{
+			for (int j = 0; j < this.curPanelEvents.size(); j++)
+			{
+				if (sidePanel.getChildren().get(i).equals(this.curPanelEvents.get(j)))
+				{
+					sidePanel.getChildren().remove(i--);
+					this.curPanelEvents.remove(j--);
+				}
+			}
+		}
+		return;
 	}
 	
 	private void setCalendarMonth(int month, int year)
@@ -287,9 +399,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		yearLabel.setText(String.valueOf(year));
 		
 		Calendar cal = new GregorianCalendar(year, month - 1, 1);
-		resetLabels();
+		resetCalDates();
 		int numDayOfMonth = monthDayNums[month - 1]; // TODO check for leapyear
 		int _DOW = cal.get(Calendar.DAY_OF_WEEK);
+		firstDayOfMonth = _DOW;
 		int weekCount = 1;
 		for (int i = 0; i < numDayOfMonth; i++)
 		{
@@ -303,16 +416,132 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 	}
 	
-	private void displayEvents()
+	private void displayCalEvents()
 	{
+		resetEvents();
+		// Get the number of events per date this month:
+		HashMap<String, Integer[]> numEventsPerDate = new HashMap<String, Integer[]>(); // Integer[0] is total events this date, Integer[1] is how many have been shown thus far.
 		for (int i = 0; i < user.getEvents().size(); i++)
 		{
-			
+			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			for (int dateNum = 0; dateNum < datesForCurEvent; dateNum++)
+			{
+				String curDate = user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
+				if (numEventsPerDate.containsKey(curDate))
+				{
+					numEventsPerDate.get(curDate)[0]++;
+				}
+				else
+				{
+					numEventsPerDate.put(curDate, new Integer[]{1, 0});
+				}
+			}
+		}
+		
+		// Display rectangles on calendar to mark events:
+		for (int i = 0; i < user.getEvents().size(); i++)
+		{
+			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			for (int curDate = 0; curDate < datesForCurEvent; curDate++)
+			{
+				String[] date = user.getEvents().get(i).getDates().get(curDate).split("_");
+				String[] yearMonthDay = date[0].split("-");
+				if (Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[0]) == selectedYear) // If this event happens this month, this year:
+				{
+					Rectangle eventBar = new Rectangle();
+					eventBar.setFill(user.getEvents().get(i).getColor());
+					eventBar.setHeight(this.CAL_EVENT_REC_HEIGHT);
+					eventBar.setWidth(45.0);
+					eventBar.setOpacity(1.0);
+					// Calculate position in calendar:
+					int dateDOW = (this.firstDayOfMonth + ((Integer.valueOf(yearMonthDay[2]) % 7) - 1)) % 7;
+					if (dateDOW == 0)
+					{
+						dateDOW = 7;
+					}
+					int dateWeek = ((Integer.valueOf(yearMonthDay[2]) + (this.firstDayOfMonth - 2)) / 7);
+					
+					double[] pos = {dateCircles.get(dateWeek).get(dateDOW - 1).getLayoutX(), dateCircles.get(dateWeek).get(dateDOW - 1).getLayoutY() + 4.0};
+					eventBar.setX(pos[0]);
+					eventBar.setY(pos[1] + (numEventsPerDate.get(date[0])[1] * this.CAL_EVENT_REC_HEIGHT));
+					calendarPane.getChildren().add(0, eventBar);
+					curCalEvents.add(eventBar);
+					
+					numEventsPerDate.get(date[0])[1]++;
+				}
+			}
 		}
 	}
 	
-	private void displayDayPanel()
+	private void displayDayPanelEvents()
 	{
+		resetSidePanelEvents();
+		// Get the events that occur on selectedDay:
+		ArrayList<Event> curEvents = new ArrayList<Event>();
+		for (int i = 0; i < user.getEvents().size(); i++)
+		{
+			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			for (int dateNum = 0; dateNum < datesForCurEvent; dateNum++)
+			{
+				String curDate = user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
+				String[] yearMonthDay = curDate.split("-");
+				if (Integer.valueOf(yearMonthDay[0]) == selectedYear && Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[2]) == selectedDay)
+				{
+					curEvents.add(user.getEvents().get(i));
+				}
+			}
+		}
 		
+		// Create Labels and place them in the side Panel:
+		double curPosition = TIME_LABEL_START_Y;
+		for (int i = 0; i < curEvents.size(); i++)
+		{
+			// Get the description label correctly formatted:
+			Label curEventDesc = new Label();
+			curEventDesc.setText(curEvents.get(i).getDesc());
+			curEventDesc.setFont(new Font("Arial", 10));
+			curEventDesc.setTextFill(curEvents.get(i).getColor());
+			
+			// Get time label correctly formatted:
+			Label curEventTime = new Label();
+			String time = curEvents.get(i).getDates().get(0).split("_")[1];
+			String hour;
+			if (Integer.valueOf(time.split(":")[0]) % 12 == 1) // If it's PM,
+			{
+				if (Integer.valueOf(time.split(":")[0]) > 12)
+				{
+					hour = String.valueOf(Integer.valueOf(time.split(":")[0]) % 12);
+				}
+				else
+				{
+					hour = time.split(":")[0];
+				}
+				curEventTime.setText(hour + curEvents.get(i).getDates().get(0).split("_")[1].split(":")[1] + "PM");				
+			}
+			else
+			{
+				curEventTime.setText(curEvents.get(i).getDates().get(0).split("_")[1] + "AM");		
+			}
+			curEventTime.setFont(new Font("Arial", 10));
+			curEventTime.setTextFill(curEvents.get(i).getColor());
+			
+			// Position labels:
+			curEventTime.setLayoutX(TIME_LABEL_START_X);
+			curEventTime.setLayoutY(curPosition);
+			
+			Text theText = new Text(curEventTime.getText());
+			theText.setFont(curEventTime.getFont());
+			double width = theText.getBoundsInLocal().getWidth();
+			curEventDesc.setLayoutX(TIME_LABEL_START_X + width + TIME_DESC_GAP);
+			curEventDesc.setLayoutY(curPosition);
+			
+			sidePanel.getChildren().add(curEventTime);
+			sidePanel.getChildren().add(curEventDesc);
+			
+			curPanelEvents.add(curEventTime);
+			curPanelEvents.add(curEventDesc);
+			
+			curPosition += curEventDesc.getHeight() + DESC_GAP;
+		}
 	}
 }

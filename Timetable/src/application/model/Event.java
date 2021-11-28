@@ -24,7 +24,7 @@ public class Event
 		this.desc = desc;
 		this.dates = dates;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-		LocalDateTime now = LocalDateTime.now();  
+		LocalDateTime now = LocalDateTime.now();
 		this.ID = (String) dtf.format(now); // Generates an id which is the time of creation. 
 	}
 	
