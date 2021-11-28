@@ -359,7 +359,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			{
 				String[] date = user.getEvents().get(i).getDates().get(curDate).split("_");
 				String[] yearMonthDay = date[0].split("-");
-				if (Integer.valueOf(yearMonthDay[1]) == selectedMonth) // If this event happens this month,
+				if (Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[0]) == selectedYear) // If this event happens this month, this year:
 				{
 					Rectangle eventBar = new Rectangle();
 					eventBar.setFill(user.getEvents().get(i).getColor());
@@ -372,7 +372,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 					{
 						dateDOW = 7;
 					}
-					int dateWeek = ((Integer.valueOf(yearMonthDay[2])- 1) / 7);
+					int dateWeek = ((Integer.valueOf(yearMonthDay[2]) + (this.firstDayOfMonth - 2)) / 7);
 					
 					double[] pos = {dateCircles.get(dateWeek).get(dateDOW - 1).getLayoutX(), dateCircles.get(dateWeek).get(Integer.valueOf(dateDOW - 1)).getLayoutY() + 4.0};
 					eventBar.setX(pos[0]);
