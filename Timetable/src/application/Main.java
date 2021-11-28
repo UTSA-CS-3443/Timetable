@@ -7,12 +7,12 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
-import javafx.scene.layout.AnchorPane;
 
 
 public class Main extends Application 
 {
 	public static Stage stage;
+	
 	
 	@Override
 	public void start(Stage primaryStage) 
@@ -39,27 +39,6 @@ public class Main extends Application
 		launch(args);
 	}
   
-  /**
-	public static User user;
-  
-	@Override
-	public void start(Stage primaryStage) {
-		try 
-		{
-			AnchorPane root = new AnchorPane();
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation( Main.class.getResource("view/TodoList.fxml") );
-			root = (AnchorPane)loader.load();
-			Scene scene = new Scene (root);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		} 
-		catch(Exception e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	**/
 	
 	/**
 	 * Brian Bissland Added this
