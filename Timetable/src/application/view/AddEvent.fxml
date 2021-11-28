@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: grey; -fx-border-style: solid inside; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.AddEventController">
+   <children>
+      <Label layoutX="243.0" layoutY="30.0" style="-fx-text-fill: white;" text="Add New Event" underline="true">
+         <font>
+            <Font name="Bell MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventStartDateLabel" layoutX="92.0" layoutY="128.0" text="Start Date: ">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="eventStartDate" editable="false" layoutX="197.0" layoutY="128.0" />
+      <DatePicker fx:id="eventEndDate" editable="false" layoutX="504.0" layoutY="128.0" />
+      <Label fx:id="eventTimeLabel" layoutX="92.0" layoutY="183.0" text="Event Time: ">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <ColorPicker fx:id="eventColor" layoutX="221.0" layoutY="236.0" />
+      <Label layoutX="92.0" layoutY="236.0" prefHeight="26.0" prefWidth="127.0" text="Event Color: ">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventDescLabel" layoutX="92.0" layoutY="336.0" prefHeight="26.0" prefWidth="195.0" text="Description of Event:">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#414243" height="160.0" layoutX="99.0" layoutY="368.0" stroke="BLACK" strokeType="INSIDE" width="549.0" />
+      <TextArea fx:id="descOfEvent" layoutX="101.0" layoutY="370.0" prefHeight="156.0" prefWidth="545.0" />
+      <Button fx:id="addEvent" layoutX="350.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#addEventClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Add Event">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="eventEndDateLabel" layoutX="407.0" layoutY="128.0" text="End Date: ">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="startTime" layoutX="215.0" layoutY="183.0" prefWidth="150.0" visibleRowCount="5" />
+      <CheckBox fx:id="eventPriority" alignment="CENTER" contentDisplay="RIGHT" layoutX="189.0" layoutY="291.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" textAlignment="RIGHT">
+         <font>
+            <Font name="Bell MT" size="12.0" />
+         </font>
+      </CheckBox>
+      <Label layoutX="92.0" layoutY="291.0" prefHeight="26.0" prefWidth="91.0" text="Priority?">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
