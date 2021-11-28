@@ -49,6 +49,16 @@ public class User extends Calendar
 				break;
 		}
 	}
+	
+	public void loadUser()
+	{
+		
+	}
+	
+	public void saveUser()
+	{
+		
+	}
 
 	/**
 	 * @return the name

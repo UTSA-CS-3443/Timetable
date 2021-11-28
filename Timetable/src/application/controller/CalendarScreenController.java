@@ -255,8 +255,8 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		
 		// Load and display events:
 		user = new User();
+		user.loadUser();
 		curCalEvents = new ArrayList<Rectangle>();
-		user.loadEvents();
 		displayCalEvents();
 		
 		// Load day panel:
