@@ -253,7 +253,7 @@
                   <Font name="Bell MT Italic" size="19.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616161" height="532.0" layoutX="-16.0" layoutY="-24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="72.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616161" height="226.0" layoutX="-25.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="96.0" />
             <Label layoutX="185.0" layoutY="73.0" text="SUN" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="12.0" />
@@ -301,6 +301,24 @@
                   <Font name="Bell MT Italic" size="19.0" />
                </font>
             </Label>
+            <ImageView fx:id="settings" fitHeight="71.0" fitWidth="76.0" layoutX="-3.0" layoutY="293.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/cog.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="76.0" layoutX="-4.0" layoutY="217.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/todo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="3.0" layoutY="145.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/add.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="addButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" layoutX="6.0" layoutY="144.0" onMouseClicked="#handleAdd" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+            <Rectangle fx:id="todoButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="71.0" layoutX="5.0" layoutY="216.0" onMouseClicked="#handleTodo" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+            <Rectangle fx:id="settingsButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="6.0" layoutY="303.0" onMouseClicked="#handleSettings" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
          </children></AnchorPane>
     <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: grey;">
          <children>
