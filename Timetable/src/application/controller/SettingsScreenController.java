@@ -1,6 +1,6 @@
 package application.controller;
 
-import application.model.Settings;
+import application.model.Setting;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -88,12 +88,12 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
      * Mute button toggle.
      */
     public void muteButtonToggle() {
-        if (Boolean.TRUE.equals(Settings.isMuted)) {
-            Settings.isMuted = false;
+        if (Boolean.TRUE.equals(Setting.isMuted)) {
+            Setting.isMuted = false;
             stopMedia();
             muteButton.setStyle(COLOR_STYLE_RED);
         } else {
-            Settings.isMuted = true;
+            Setting.isMuted = true;
             playMedia();
             muteButton.setStyle(COLOR_STYLE_GREEN);
         }
@@ -103,11 +103,11 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
      * Desktop notif button.
      */
     public void desktopNotifButton() {
-        if (Boolean.TRUE.equals(Settings.desktopNotifi)) {
-            Settings.desktopNotifi = false;
+        if (Boolean.TRUE.equals(Setting.desktopNotifi)) {
+            Setting.desktopNotifi = false;
             desktopNotif.setStyle(COLOR_STYLE_RED);
         } else {
-            Settings.desktopNotifi = true;
+            Setting.desktopNotifi = true;
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
         }
     }
@@ -115,17 +115,17 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        media = new Media(Settings.alarmSound);
+        media = new Media(Setting.alarmSound);
         mediaPlayer = new MediaPlayer(media);
-        if (Boolean.TRUE.equals(Settings.desktopNotifi) || Boolean.FALSE.equals(Settings.desktopNotifi)) {
-            if (Boolean.TRUE.equals(Settings.desktopNotifi)) {
+        if (Boolean.TRUE.equals(Setting.desktopNotifi) || Boolean.FALSE.equals(Setting.desktopNotifi)) {
+            if (Boolean.TRUE.equals(Setting.desktopNotifi)) {
                 desktopNotif.setStyle(COLOR_STYLE_GREEN);
             } else {
                 desktopNotif.setStyle(COLOR_STYLE_RED);
             }
         }
-        if (Boolean.TRUE.equals(Settings.isMuted) || Boolean.FALSE.equals(Settings.isMuted)) {
-            if (Boolean.TRUE.equals(Settings.isMuted)) {
+        if (Boolean.TRUE.equals(Setting.isMuted) || Boolean.FALSE.equals(Setting.isMuted)) {
+            if (Boolean.TRUE.equals(Setting.isMuted)) {
                 muteButton.setStyle(COLOR_STYLE_GREEN);
             } else {
                 muteButton.setStyle(COLOR_STYLE_RED);

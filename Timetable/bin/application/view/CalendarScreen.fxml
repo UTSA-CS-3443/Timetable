@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<SplitPane dividerPositions="0.7644110275689223" maxHeight="500.0" maxWidth="800.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-border-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CalendarScreenController">
+  <items>
+    <AnchorPane fx:id="calendarPane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: grey;">
+         <children>
+            <ImageView fitHeight="400.0" fitWidth="555.0" layoutX="55.0" layoutY="90.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/calendar.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="monthLabel" layoutX="177.0" layoutY="15.0" prefHeight="42.0" prefWidth="193.0" text="September" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="yearLabel" layoutX="391.0" layoutY="15.0" prefHeight="42.0" prefWidth="82.0" text="1999" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="50.0" fitWidth="31.0" layoutX="482.0" layoutY="10.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/arrow.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="31.0" layoutX="138.0" layoutY="10.0" rotate="180.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/arrow.png" />
+               </image>
+               <rotationAxis>
+                  <Point3D y="1.0" />
+               </rotationAxis>
+            </ImageView>
+            <Rectangle fx:id="leftArrow" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="135.0" layoutY="9.0" onMouseClicked="#handleArrow" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
+            <Rectangle fx:id="rightArrow" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="479.0" layoutY="9.0" onMouseClicked="#handleArrow" opacity="0.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="36.0" />
+            <Circle fx:id="w1d1Circ" fill="#616161" layoutX="168.0" layoutY="99.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="84.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="1" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w1d2Circ" fill="#616161" layoutX="215.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w1d3Circ" fill="#616161" layoutX="262.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d3" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w1d4Circ" fill="#616161" layoutX="309.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d4" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w1d6Circ" fill="#616161" layoutX="403.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w1d7Circ" fill="#616161" layoutX="450.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d7" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w1d6" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w1d5Circ" fill="#616161" layoutX="356.0" layoutY="100.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w1d5" alignment="CENTER" contentDisplay="CENTER" layoutX="346.0" layoutY="85.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w2d7Circ" fill="#616161" layoutX="451.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w2d7" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w2d3Circ" fill="#616161" layoutX="262.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w2d5Circ" fill="#616161" layoutX="356.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w2d6Circ" fill="#616161" layoutX="403.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w2d2Circ" fill="#616161" layoutX="215.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w2d6" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w2d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w2d1Circ" fill="#616161" layoutX="168.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w2d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w2d4Circ" fill="#616161" layoutX="310.0" layoutY="149.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w2d4" alignment="CENTER" contentDisplay="CENTER" layoutX="300.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w2d3" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w3d6Circ" fill="#616161" layoutX="403.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w2d5" alignment="CENTER" contentDisplay="CENTER" layoutX="346.0" layoutY="134.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w3d5Circ" fill="#616161" layoutX="356.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w3d6" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w3d7Circ" fill="#616161" layoutX="451.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w3d2Circ" fill="#616161" layoutX="215.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w3d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w3d7" alignment="CENTER" contentDisplay="CENTER" layoutX="441.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w3d3Circ" fill="#616161" layoutX="262.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w3d1Circ" fill="#616161" layoutX="168.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w3d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w3d4Circ" fill="#616161" layoutX="309.0" layoutY="199.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w3d4" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w3d5" alignment="CENTER" contentDisplay="CENTER" layoutX="346.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w3d3" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="184.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w4d2Circ" fill="#616161" layoutX="215.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w4d3Circ" fill="#616161" layoutX="262.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w4d3" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w4d6Circ" fill="#616161" layoutX="404.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w4d5Circ" fill="#616161" layoutX="357.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w4d7Circ" fill="#616161" layoutX="450.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w4d5" alignment="CENTER" contentDisplay="CENTER" layoutX="347.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w4d4Circ" fill="#616161" layoutX="309.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w4d1Circ" fill="#616161" layoutX="168.0" layoutY="251.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w4d7" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w4d6" alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w4d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w4d4" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w4d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="236.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w5d1Circ" fill="#616161" layoutX="168.0" layoutY="303.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w5d2Circ" fill="#616161" layoutX="215.0" layoutY="303.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w5d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="288.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w5d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="288.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w5d7Circ" fill="#616161" layoutX="450.0" layoutY="305.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w5d4Circ" fill="#616161" layoutX="309.0" layoutY="304.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w5d4" alignment="CENTER" contentDisplay="CENTER" layoutX="299.0" layoutY="289.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w5d3Circ" fill="#616161" layoutX="263.0" layoutY="303.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Circle fx:id="w5d6Circ" fill="#616161" layoutX="403.0" layoutY="304.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w5d6" alignment="CENTER" contentDisplay="CENTER" layoutX="393.0" layoutY="289.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w5d5Circ" fill="#616161" layoutX="357.0" layoutY="305.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w5d3" alignment="CENTER" contentDisplay="CENTER" layoutX="253.0" layoutY="288.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w5d7" alignment="CENTER" contentDisplay="CENTER" layoutX="440.0" layoutY="290.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="w5d5" alignment="CENTER" contentDisplay="CENTER" layoutX="347.0" layoutY="290.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616161" height="226.0" layoutX="-25.0" layoutY="141.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="96.0" />
+            <Label layoutX="185.0" layoutY="73.0" text="SUN" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="231.0" layoutY="73.0" text="MON" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="275.0" layoutY="73.0" text="TUE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="319.0" layoutY="73.0" text="WED" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="362.0" layoutY="73.0" text="THU" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="411.0" layoutY="73.0" text="FRI" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="454.0" layoutY="73.0" text="SAT" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="12.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w6d1Circ" fill="#616161" layoutX="168.0" layoutY="357.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w6d1" alignment="CENTER" contentDisplay="CENTER" layoutX="158.0" layoutY="342.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <Circle fx:id="w6d2Circ" fill="#616161" layoutX="215.0" layoutY="357.0" onMouseClicked="#handleDateSelection" radius="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Label fx:id="w6d2" alignment="CENTER" contentDisplay="CENTER" layoutX="205.0" layoutY="342.0" onMouseClicked="#handleDateSelection" prefHeight="27.0" prefWidth="19.0" text="31" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Bell MT Italic" size="19.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="settings" fitHeight="71.0" fitWidth="76.0" layoutX="-3.0" layoutY="293.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/cog.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="71.0" fitWidth="76.0" layoutX="-4.0" layoutY="217.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/todo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="64.0" layoutX="3.0" layoutY="145.0">
+               <image>
+                  <Image url="@../../../res/CalendarScreen/add.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="addButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="64.0" layoutX="6.0" layoutY="144.0" onMouseClicked="#handleAdd" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+            <Rectangle fx:id="todoButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="71.0" layoutX="5.0" layoutY="216.0" onMouseClicked="#handleTodo" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+            <Rectangle fx:id="settingsButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="6.0" layoutY="303.0" onMouseClicked="#handleSettings" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
+         </children></AnchorPane>
+    <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: grey;">
+         <children>
+            <Rectangle fx:id="sidePanelTop" arcHeight="5.0" arcWidth="5.0" fill="#616161" height="42.0" layoutX="-2.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
+            <Label layoutX="27.0" layoutY="5.0" text="Day's Events" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="22.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
