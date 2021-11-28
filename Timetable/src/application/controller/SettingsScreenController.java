@@ -4,16 +4,26 @@ import application.model.Settings;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
  * The type Settings con.
  */
-public class SettingsCon implements EventHandler<ActionEvent>, Initializable {
+public class SettingsScreenController implements EventHandler<ActionEvent>, Initializable {
     private static final String COLOR_STYLE_RED = "-fx-background-color: red";
     private static final String COLOR_STYLE_GREEN = "fx-background-color: green";
     /**
@@ -26,6 +36,13 @@ public class SettingsCon implements EventHandler<ActionEvent>, Initializable {
      */
     @FXML
     public ToggleButton muteButton;
+    public Button homeButton;
+    public Button twoSelection;
+    public Button oneSelection;
+    public Button threeSelection;
+    public Button fourSelection;
+    private Media media;
+    private MediaPlayer mediaPlayer;
 
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -33,8 +50,38 @@ public class SettingsCon implements EventHandler<ActionEvent>, Initializable {
             muteButtonToggle();
         } else if (actionEvent.getSource() == desktopNotif) {
             desktopNotifButton();
+        } else if (actionEvent.getSource() == homeButton) {
+            try {
+                switchToMain(actionEvent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if (actionEvent.getSource() == oneSelection) {
+            ///user goes here's
+        } else if (actionEvent.getSource() == twoSelection) {
+            ///User goes here
+        } else if (actionEvent.getSource() == threeSelection) {
+            ///User goes here
+        } else {
+            ///User goes here
         }
+    }
 
+
+    private void switchToMain(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/CalendarScreen.fxml")));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void playMedia() {
+        mediaPlayer.play();
+    }
+
+    public void stopMedia() {
+        mediaPlayer.stop();
     }
 
     /**
@@ -43,9 +90,11 @@ public class SettingsCon implements EventHandler<ActionEvent>, Initializable {
     public void muteButtonToggle() {
         if (Boolean.TRUE.equals(Settings.isMuted)) {
             Settings.isMuted = false;
+            stopMedia();
             muteButton.setStyle(COLOR_STYLE_RED);
         } else {
             Settings.isMuted = true;
+            playMedia();
             muteButton.setStyle(COLOR_STYLE_GREEN);
         }
     }
@@ -66,13 +115,16 @@ public class SettingsCon implements EventHandler<ActionEvent>, Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        media = new Media(Settings.alarmSound);
+        mediaPlayer = new MediaPlayer(media);
         if (Boolean.TRUE.equals(Settings.desktopNotifi) || Boolean.FALSE.equals(Settings.desktopNotifi)) {
             if (Boolean.TRUE.equals(Settings.desktopNotifi)) {
                 desktopNotif.setStyle(COLOR_STYLE_GREEN);
             } else {
                 desktopNotif.setStyle(COLOR_STYLE_RED);
             }
-        } if (Boolean.TRUE.equals(Settings.isMuted) || Boolean.FALSE.equals(Settings.isMuted)) {
+        }
+        if (Boolean.TRUE.equals(Settings.isMuted) || Boolean.FALSE.equals(Settings.isMuted)) {
             if (Boolean.TRUE.equals(Settings.isMuted)) {
                 muteButton.setStyle(COLOR_STYLE_GREEN);
             } else {
