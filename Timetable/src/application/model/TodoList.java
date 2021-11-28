@@ -12,7 +12,7 @@ public class TodoList {
 	 */
 	
 	public TodoList() {
-		ArrayList<Todo> tasks = new ArrayList<Todo>();
+		this.tasks = new ArrayList<Todo>();
 	}
 	
 	/**
@@ -38,6 +38,10 @@ public class TodoList {
 	 */
 	public void updateTodo(int id, String desc) {
 		tasks.get(id).setDesc(desc);
+	}
+	
+	public Todo getTodo(int id) {
+		return tasks.get(id);
 	}
 
 	/**
@@ -66,5 +70,9 @@ public class TodoList {
 	 */
 	public void setCurId(int curId) {
 		this.taskID = curId;
+	}
+	
+	public int getListSize() {
+		return tasks.size();
 	}
 }
