@@ -302,7 +302,7 @@
                </font>
             </Label>
          </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: grey;">
+    <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: grey;">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616161" height="63.0" layoutX="-2.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
          </children></AnchorPane>

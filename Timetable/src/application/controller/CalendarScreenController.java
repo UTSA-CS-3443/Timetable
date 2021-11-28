@@ -1,5 +1,6 @@
 package application.controller;
 
+import application.model.Event;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -184,10 +185,12 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	
 	@FXML
 	private AnchorPane calendarPane;
+	@FXML
+	private AnchorPane sidePanel;
 	
 	private ArrayList<ArrayList<Label>> dateLabels;
 	private ArrayList<ArrayList<Circle>> dateCircles;
-	private int dateSelected;  // NOTE: Base 1
+	private int selectedDay;  // NOTE: Base 1
 	private int firstDayOfMonth; // NOTE: Base 1
 	private int selectedMonth; // NOTE: Base 1
 	private int selectedYear;
@@ -195,6 +198,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int[] monthDayNums = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	private User user;
 	private ArrayList<Rectangle> curCalEvents;
+	private ArrayList<Label> curPanelEvents;
 	
 	public void initialize()
 	{
@@ -230,9 +234,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		this.setCalendarMonth(selectedMonth, selectedYear);
 		
 		// Select currentDate:
-		dateSelected = Integer.valueOf(date[2]);
-		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStrokeWidth(2);
-		dateCircles.get((dateSelected / 7)).get((dateSelected) % 7).setStroke(Color.RED);
+		selectedDay = Integer.valueOf(date[2]);
+		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStrokeWidth(2);
+		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
 		user = new User();
@@ -300,6 +304,22 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 				{
 					calendarPane.getChildren().remove(i--);
 					this.curCalEvents.remove(j--);
+				}
+			}
+		}
+		return;
+	}
+	
+	private void resetSidePanelEvents()
+	{
+		for (int i = 0; i < calendarPane.getChildren().size(); i++)
+		{
+			for (int j = 0; j < this.curPanelEvents.size(); j++)
+			{
+				if (calendarPane.getChildren().get(i).equals(this.curPanelEvents.get(j)))
+				{
+					calendarPane.getChildren().remove(i--);
+					this.curPanelEvents.remove(j--);
 				}
 			}
 		}
@@ -388,6 +408,23 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	
 	private void displayDayPanel()
 	{
+		resetSidePanelEvents();
+		// Get the number of events per date this month:
+		ArrayList<Event> curEvents = new ArrayList<Event>();
+		for (int i = 0; i < user.getEvents().size(); i++)
+		{
+			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			for (int dateNum = 0; dateNum < datesForCurEvent; dateNum++)
+			{
+				String curDate = user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
+				String[] yearMonthDay = curDate.split("-");
+				if (Integer.valueOf(yearMonthDay[0]) == selectedYear && Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[2]) == selectedDay)
+				{
+					numEventsPerDate.get(curDate)[0]++;
+				}
+			}
+		}
+		
 		
 	}
 }
