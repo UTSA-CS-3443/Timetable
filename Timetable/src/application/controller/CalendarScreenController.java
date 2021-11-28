@@ -456,7 +456,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 	}
 	
-	private void displayCalEvents()
+	private void displayCalEvents() 
 	{
 		resetEvents();
 		// Get the number of events per date this month:
@@ -583,5 +583,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			
 			curPosition += curEventDesc.getHeight() + DESC_GAP;
 		}
+	}
+	
+	public void addNewEventClicked(MouseEvent event)
+	{
+		Main.sceneSwitcher("AddEvent.fxml");
 	}
 }

@@ -9,14 +9,14 @@ public class Event
 {
 	private ArrayList<String> dates;
 	private Color color;
-	private String timeToRemind;
+	private int timeToRemind;
 	private Boolean isPriority;
 	private String desc;
 	private Boolean isCompleted;
 	private Boolean isMissed;
 	private String ID;
 	
-	public Event(Color color, String timeToRemind, Boolean isPriority, String desc, ArrayList<String> dates)
+	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, ArrayList<String> dates)
 	{
 		this.color = color;
 		this.timeToRemind = timeToRemind;
@@ -69,14 +69,14 @@ public class Event
 	/**
 	 * @return the timeToRemind
 	 */
-	public String getTimeToRemind() {
+	public int getTimeToRemind() {
 		return timeToRemind;
 	}
 
 	/**
 	 * @param timeToRemind the timeToRemind to set
 	 */
-	public void setTimeToRemind(String timeToRemind) {
+	public void setTimeToRemind(int timeToRemind) {
 		this.timeToRemind = timeToRemind;
 	}
 
