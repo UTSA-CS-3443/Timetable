@@ -15,50 +15,65 @@
             <Font name="Bell MT Bold" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="eventStartDateLabel" layoutX="92.0" layoutY="128.0" text="Start Date: ">
+      <Label fx:id="eventStartDateLabel" layoutX="92.0" layoutY="128.0" style="-fx-text-fill: black;" text="Start Date: ">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <DatePicker fx:id="eventStartDate" editable="false" layoutX="197.0" layoutY="128.0" />
-      <DatePicker fx:id="eventEndDate" editable="false" layoutX="504.0" layoutY="128.0" />
-      <Label fx:id="eventTimeLabel" layoutX="92.0" layoutY="183.0" text="Event Time: ">
+      <DatePicker fx:id="eventStartDate" editable="false" layoutX="197.0" layoutY="128.0" promptText="Select start date..." />
+      <DatePicker fx:id="eventEndDate" editable="false" layoutX="504.0" layoutY="128.0" promptText="Select end date..." />
+      <Label fx:id="eventTimeLabel" layoutX="92.0" layoutY="183.0" style="-fx-text-fill: black;" text="Event Time: ">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <ColorPicker fx:id="eventColor" layoutX="221.0" layoutY="236.0" />
-      <Label layoutX="92.0" layoutY="236.0" prefHeight="26.0" prefWidth="127.0" text="Event Color: ">
+      <ColorPicker fx:id="eventColor" layoutX="224.0" layoutY="293.0" />
+      <Label layoutX="95.0" layoutY="293.0" prefHeight="26.0" prefWidth="127.0" style="-fx-text-fill: black;" text="Event Color: ">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="eventDescLabel" layoutX="92.0" layoutY="336.0" prefHeight="26.0" prefWidth="195.0" text="Description of Event:">
+      <Label fx:id="eventDescLabel" layoutX="95.0" layoutY="403.0" prefHeight="26.0" prefWidth="195.0" style="-fx-text-fill: black;" text="Description of Event:">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#414243" height="160.0" layoutX="99.0" layoutY="368.0" stroke="BLACK" strokeType="INSIDE" width="549.0" />
-      <TextArea fx:id="descOfEvent" layoutX="101.0" layoutY="370.0" prefHeight="156.0" prefWidth="545.0" />
-      <Button fx:id="addEvent" layoutX="350.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#addEventClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Add Event">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#414243" height="160.0" layoutX="102.0" layoutY="432.0" stroke="BLACK" strokeType="INSIDE" width="549.0" />
+      <TextArea fx:id="descOfEvent" layoutX="104.0" layoutY="434.0" prefHeight="156.0" prefWidth="545.0" promptText="Enter a description for the event." wrapText="true">
+         <font>
+            <Font name="Bell MT" size="17.0" />
+         </font></TextArea>
+      <Button fx:id="addEvent" layoutX="354.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#addEventClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Add Event">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Label fx:id="eventEndDateLabel" layoutX="407.0" layoutY="128.0" text="End Date: ">
+      <Label fx:id="eventEndDateLabel" layoutX="407.0" layoutY="128.0" style="-fx-text-fill: black;" text="End Date: ">
          <font>
             <Font name="Bell MT" size="22.0" />
          </font>
       </Label>
-      <ComboBox fx:id="startTime" layoutX="215.0" layoutY="183.0" prefWidth="150.0" visibleRowCount="5" />
-      <CheckBox fx:id="eventPriority" alignment="CENTER" contentDisplay="RIGHT" layoutX="189.0" layoutY="291.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" textAlignment="RIGHT">
+      <ComboBox fx:id="startTime" layoutX="215.0" layoutY="183.0" prefWidth="150.0" promptText="Select time..." visibleRowCount="5" />
+      <CheckBox fx:id="eventPriority" alignment="CENTER" contentDisplay="RIGHT" layoutX="192.0" layoutY="348.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="18.0" textAlignment="RIGHT">
          <font>
             <Font name="Bell MT" size="12.0" />
          </font>
       </CheckBox>
-      <Label layoutX="92.0" layoutY="291.0" prefHeight="26.0" prefWidth="91.0" text="Priority?">
+      <Label layoutX="95.0" layoutY="348.0" prefHeight="26.0" prefWidth="91.0" style="-fx-text-fill: black;" text="Priority?">
          <font>
             <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="eventTimeLabel1" layoutX="92.0" layoutY="238.0" style="-fx-text-fill: black;" text="Remind me             hour(s) and             minute(s) before the event start time.">
+         <font>
+            <Font name="Bell MT" size="22.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="remindHours" editable="true" layoutX="199.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" promptText="0" visibleRowCount="5" />
+      <ComboBox fx:id="remindMinutes" editable="true" layoutX="372.0" layoutY="234.0" prefHeight="25.0" prefWidth="62.0" promptText="0" visibleRowCount="5" />
+      <Label fx:id="mandatoryFieldLabel" layoutX="104.0" layoutY="683.0" prefHeight="26.0" prefWidth="301.0" style="-fx-text-fill: red;" textFill="#b52400">
+         <font>
+            <Font name="Bell MT Bold" size="17.0" />
          </font>
       </Label>
    </children>
