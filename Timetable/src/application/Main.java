@@ -12,7 +12,6 @@ import javafx.scene.control.SplitPane;
 public class Main extends Application 
 {
 	public static Stage stage;
-	public static User user;
 	
 	
 	@Override
@@ -27,8 +26,6 @@ public class Main extends Application
 			Scene scene = new Scene (root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			
-			stage = primaryStage;
 		} 
 		catch(Exception e) 
 		{
@@ -37,7 +34,8 @@ public class Main extends Application
 	}
 	
 	public static void main(String[] args) {
-
+		Notifier not = new Notifier();
+		not.start();
 		launch(args);
 	}
   
