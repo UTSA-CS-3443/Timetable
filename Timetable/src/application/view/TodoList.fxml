@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane fx:id="anchorPane" maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TodoListController">
+<AnchorPane fx:id="anchorPane" maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.TodoListController">
    <children>
       <ScrollPane fx:id="scrollPane" layoutY="50.0" maxWidth="800.0" minWidth="800.0" prefHeight="750.0" prefWidth="800.0">
          <content>
@@ -27,5 +26,6 @@
       </ScrollPane>
       <TextField fx:id="addText" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" promptText="What do you need to do?" />
       <Button fx:id="addButton" layoutX="360.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addTodoFromButton" text="Add Todo" />
+      <Button layoutX="736.0" layoutY="15.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>
