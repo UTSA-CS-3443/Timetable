@@ -23,28 +23,39 @@ public class User extends Calendar {
      * Gets serialize user.
      *
      * @return the serialize user
-     * @throws IOException            the io exception
-     * @throws ClassNotFoundException the class not found exception
      */
-    public static Object getSerializeUser() throws IOException, ClassNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream("User.txt");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        objectInputStream.close();
-        return objectInputStream.readObject();
+    public static Object getSerializeUser() {
+    	try 
+    	{
+	        FileInputStream fileInputStream = new FileInputStream("User.txt");
+	        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+	        objectInputStream.close();
+	        return objectInputStream.readObject();
+    	}
+    	catch (Exception e)
+    	{
+    		return new User();
+    	}
     }
 
     /**
      * Sets serialize user.
      *
      * @param object the object
-     * @throws IOException the io exception
      */
-    public static void setSerializeUser(Object object) throws IOException {
-        File fileOut = new File("User.txt");
-        FileOutputStream fileOutputStream = new FileOutputStream(fileOut);
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(object);
-        fileOutputStream.close();
+    public static void setSerializeUser(Object object) {
+    	try 
+    	{
+	        File fileOut = new File("User.txt");
+	        FileOutputStream fileOutputStream = new FileOutputStream(fileOut);
+	        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+	        objectOutputStream.writeObject(object);
+	        fileOutputStream.close();
+    	}
+    	catch (Exception e)
+    	{
+    		e.printStackTrace();
+    	}
     }
 
     /**

@@ -27,16 +27,16 @@ public class Notifier implements Runnable
 		LocalDateTime now;  
 		String before = "";
 		makeDesktopNotification("Test this ia test al;kdfsja;slkdfjkasl;dfj;alskdfj;laskfj;laskfjasl;fjasd;lfkasdf;lkj", Color.RED);
-		/*while (true)
+		while (true)
 		{
-			now = LocalDateTime.now();   dtf.format(now)
-			if (!before.equals(now.toString())) // If the time has changed by a minute
+			now = LocalDateTime.now();
+			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
-				user = User.loadUser();
+				user = (User) User.getSerializeUser();
 				ArrayList<Event> events = user.getEvents();
 				String date = "";
 				String time = "";
-				String[] curTime = now.toString().split(" ");
+				String[] curTime = dtf.format(now).toString().split(" ");
 				for (int i = 0; i < events.size(); i++)
 				{
 					// Loop through event dates:
@@ -55,12 +55,12 @@ public class Notifier implements Runnable
 						
 						if (date.equals(curTime[0]) && time.equals(curTime[1])) // This event happens now:
 						{
-							makeDesktopNotification("Event Happening Now:\n" + events.get(i).getDesc());
+							makeDesktopNotification("Event Happening Now:\n" + events.get(i).getDesc(), events.get(i).getColor());
 							events.get(i).setIsCompleted(true);
 						}
 						else if (date.equals(curTime[0]) && curTimeMinutes == (dateTimeMinutes + events.get(i).getTimeToRemind())) // If event reminder time is now:
 						{
-							makeDesktopNotification("Event Happening in " + events.get(i).getTimeToRemind() + " minutes:\n" + events.get(i).getDesc());
+							makeDesktopNotification("Event Happening in " + events.get(i).getTimeToRemind() + " minutes:\n" + events.get(i).getDesc(), events.get(i).getColor());
 						}
 						if (events.get(i).getIsPriority())
 						{
@@ -69,9 +69,9 @@ public class Notifier implements Runnable
 					}
 					before = now.toString();
 				}
-				User.saveUser(user);
+				User.setSerializeUser(user);
 			}
-		}*/
+		}
 	}
 	
 	public void start()

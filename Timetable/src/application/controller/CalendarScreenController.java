@@ -254,8 +254,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
-		user = new User();
-		user.loadUser();
+		user = (User) User.getSerializeUser();
 		curCalEvents = new ArrayList<Rectangle>();
 		displayCalEvents();
 		
