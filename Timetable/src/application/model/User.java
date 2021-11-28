@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class User extends Calendar {
     private String name;
-    private Settings settings;
+    private Setting settings;
     private TodoList todo;
 
     /**
@@ -15,7 +15,7 @@ public class User extends Calendar {
      */
     public User() {
         super();
-        this.settings = new Settings();
+        this.settings = new Setting();
         this.todo = new TodoList();
     }
 
@@ -132,7 +132,7 @@ public class User extends Calendar {
      *
      * @return the settings
      */
-    public Settings getSettings() {
+    public Setting getSettings() {
         return settings;
     }
 
@@ -141,7 +141,7 @@ public class User extends Calendar {
      *
      * @param settings the settings to set
      */
-    public void setSettings(Settings settings) {
+    public void setSettings(Setting settings) {
         this.settings = settings;
     }
 
