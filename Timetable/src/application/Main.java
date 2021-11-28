@@ -7,11 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
 
 
-public class Main extends Application {
+public class Main extends Application 
+{
+	public Stage stage;
+	
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) 
+	{
 		try 
 		{
+			stage = primaryStage;
 			SplitPane root = new SplitPane();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation( Main.class.getResource("view/CalendarScreen.fxml") );
@@ -27,7 +32,8 @@ public class Main extends Application {
 	}
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		launch(args);
 	}
 }
