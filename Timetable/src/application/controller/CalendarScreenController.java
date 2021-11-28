@@ -268,37 +268,19 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	{
 	}
 	
-	public void handleSettings(MouseEvent event) throws IOException
+	public void handleSettings(MouseEvent event)
 	{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation( Main.class.getResource("view/Setting.fxml") );
-		Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		Main.sceneSwitcher("Settings.fxml");
 	}
 	
-	public void handleTodo(MouseEvent event) throws IOException
+	public void handleTodo(MouseEvent event)
 	{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation( Main.class.getResource("view/TodoList.fxml") );
-		Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		Main.sceneSwitcher("TodoList.fxml");
 	}
 	
-	public void handleAdd(MouseEvent event) throws IOException
+	public void handleAdd(MouseEvent event)
 	{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation( Main.class.getResource("view/addScreen.fxml") );
-		Parent root = loader.load();
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+		Main.sceneSwitcher("AddEvent.fxml");
 	}
 	
 	public void handleArrow(MouseEvent event)
@@ -584,9 +566,5 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			curPosition += curEventDesc.getHeight() + DESC_GAP;
 		}
 	}
-	
-	public void addNewEventClicked(MouseEvent event)
-	{
-		Main.sceneSwitcher("AddEvent.fxml");
-	}
+
 }
