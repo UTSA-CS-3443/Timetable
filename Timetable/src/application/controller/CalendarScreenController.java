@@ -1,10 +1,14 @@
 package application.controller;
 
+import application.Main;
 import application.model.Event;
 import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -13,6 +17,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -259,6 +266,39 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	
 	public void handle(ActionEvent arg0) // Unused
 	{
+	}
+	
+	public void handleSettings(MouseEvent event) throws IOException
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation( Main.class.getResource("view/Setting.fxml") );
+		Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+	}
+	
+	public void handleTodo(MouseEvent event) throws IOException
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation( Main.class.getResource("view/TodoList.fxml") );
+		Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+	}
+	
+	public void handleAdd(MouseEvent event) throws IOException
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation( Main.class.getResource("view/addScreen.fxml") );
+		Parent root = loader.load();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 	}
 	
 	public void handleArrow(MouseEvent event)
