@@ -1,86 +1,101 @@
 package application.model;
 
-public class Settings 
-{
-	private Boolean isStartUp;
-	private Boolean desktopNotifi;
-	private Boolean isMuted; 
-	private String alarmSound; // Path to audio file; Add default
-	private int priorityInterval;
-	
-	public Settings()
-	{
-		return;
-	}
+/**
+ * The type Settings.
+ */
+public class Settings {
+    /**
+     * The constant desktopNotifi.
+     */
+    public static Boolean desktopNotifi;
+    /**
+     * The constant isMuted.
+     */
+    public static Boolean isMuted;
+    /**
+     * The constant alarmSound.
+     */
+    public static String alarmSound; // Path to audio file; Add default
 
-	/**
-	 * @return the isStartUp
-	 */
-	public Boolean getIsStartUp() {
-		return isStartUp;
-	}
+    public static int priorityInterval;
 
-	/**
-	 * @param isStartUp the isStartUp to set
-	 */
-	public void setIsStartUp(Boolean isStartUp) {
-		this.isStartUp = isStartUp;
-	}
+    /**
+     * Instantiates a new Settings.
+     */
+    public Settings() {
+        return;
+    }
 
-	/**
-	 * @return the alarmSound
-	 */
-	public String getAlarmSound() {
-		return alarmSound;
-	}
+    /**
+     * Gets alarm sound.
+     *
+     * @return the alarmSound
+     */
+    public String getAlarmSound() {
+        return alarmSound;
+    }
 
-	/**
-	 * @param alarmSound the alarmSound to set
-	 */
-	public void setAlarmSound(String alarmSound) {
-		this.alarmSound = alarmSound;
-	}
+    /**
+     * Sets alarm sound.
+     *
+     * @param alarmSound the alarmSound to set
+     */
+    public void setAlarmSound(String alarmSound) {
+        Settings.alarmSound = alarmSound;
+    }
 
-	/**
-	 * @return the isMuted
-	 */
-	public Boolean getIsMuted() {
-		return isMuted;
-	}
+    /**
+     * Gets is muted.
+     *
+     * @return the isMuted
+     */
+    public Boolean getIsMuted() {
+        return isMuted;
+    }
 
-	/**
-	 * @param isMuted the isMuted to set
-	 */
-	public void setIsMuted(Boolean isMuted) {
-		this.isMuted = isMuted;
-	}
+    /**
+     * Sets is muted.
+     *
+     * @param isMuted the isMuted to set
+     */
+    public void setIsMuted(Boolean isMuted) {
+        Settings.isMuted = isMuted;
+    }
 
-	/**
-	 * @return the priorityInterval
-	 */
-	public int getPriorityInterval() {
-		return priorityInterval;
-	}
+    /**
+     * Gets priority interval.
+     *
+     * @return the priorityInterval
+     */
+    public int getPriorityInterval() {
+        return priorityInterval;
+    }
 
-	/**
-	 * @param priorityInterval the priorityInterval to set
-	 */
-	public void setPriorityInterval(int priorityInterval) {
-		this.priorityInterval = priorityInterval;
-	}
+    /**
+     * Sets priority interval.
+     *
+     * @param priorityInterval the priorityInterval to set
+     */
+    public void setPriorityInterval(int priorityInterval) {
+        Settings.priorityInterval = priorityInterval;
+    }
 
-	/**
-	 * @return the desktopNotifi
-	 */
-	public Boolean getDesktopNotifi() {
-		return desktopNotifi;
-	}
+    /**
+     * Gets desktop notifi.
+     *
+     * @return the desktopNotifi
+     */
+    public Boolean getDesktopNotifi() {
+        return desktopNotifi;
+    }
 
-	/**
-	 * @param desktopNotifi the desktopNotifi to set
-	 */
-	public void setDesktopNotifi(Boolean desktopNotifi) {
-		this.desktopNotifi = desktopNotifi;
-	}
-	
+    /**
+     * Sets desktop notifi.
+     *
+     * @param desktopNotifi the desktopNotifi to set
+     */
+    public void setDesktopNotifi(Boolean desktopNotifi) {
+        Settings.desktopNotifi = desktopNotifi;
+    }
+
 }
