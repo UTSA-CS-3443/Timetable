@@ -1,5 +1,6 @@
 package application;
 	
+import application.model.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -9,14 +10,13 @@ import javafx.scene.control.SplitPane;
 
 public class Main extends Application 
 {
-	public Stage stage;
+	public static User user;
 	
 	@Override
 	public void start(Stage primaryStage) 
 	{
 		try 
 		{
-			stage = primaryStage;
 			SplitPane root = new SplitPane();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation( Main.class.getResource("view/CalendarScreen.fxml") );
