@@ -2,7 +2,6 @@ package application.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javafx.scene.paint.Color;
 
 public abstract class Calendar
@@ -27,9 +26,9 @@ public abstract class Calendar
 		return missedEvents;
 	}
 	
-	public void addEvent(Color color, int timeToRemind, Boolean isPriority, String desc, ArrayList<String> dates)
+	public void addEvent(Color color, int timeToRemind, Boolean isPriority, String desc, boolean isCompleted, boolean isMissed, ArrayList<String> dates)
 	{
-		events.add(new Event(color, timeToRemind, isPriority, desc, dates));
+		events.add(new Event(color, timeToRemind, isPriority, desc, isCompleted, isMissed, dates));
 	}
 	
 	public void removeEvent(String ID)
@@ -58,10 +57,10 @@ public abstract class Calendar
 	
 	public void loadEvents()
 	{
-		addEvent(Color.RED, 60, false, "Feed the Dog.", new ArrayList<String>( Arrays.asList("2021-11-27_12:00", "2021-11-15_12:00")));
-		addEvent(Color.BLUE, 60, false, "Make sure to turn in homework.", new ArrayList<String>( Arrays.asList("2021-11-21_12:00", "2021-11-15_12:00")));
-		addEvent(Color.GREEN, 60, false, "Test3", new ArrayList<String>( Arrays.asList("2021-10-1_12:00", "2021-11-15_12:00")));
-		addEvent(Color.PURPLE, 60, false, "Test4", new ArrayList<String>( Arrays.asList("2021-11-15_12:00", "2021-08-7_12:00", "2021-08-29_12:00")));
+		addEvent(Color.RED, 60, false, "Feed the Dog.", false, false, new ArrayList<String>( Arrays.asList("2021-11-27_12:00", "2021-11-15_12:00")));
+		addEvent(Color.BLUE, 60, false, "Make sure to turn in homework.", false, false, new ArrayList<String>( Arrays.asList("2021-11-21_12:00", "2021-11-15_12:00")));
+		addEvent(Color.GREEN, 60, false, "Test3", false, false, new ArrayList<String>( Arrays.asList("2021-10-1_12:00", "2021-11-15_12:00")));
+		addEvent(Color.PURPLE, 60, false, "Test4", false, false, new ArrayList<String>( Arrays.asList("2021-11-15_12:00", "2021-08-7_12:00", "2021-08-29_12:00")));
 	}
 
 	/**

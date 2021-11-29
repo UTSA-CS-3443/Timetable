@@ -2,6 +2,8 @@ package application;
 	
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import application.model.User;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -17,6 +19,7 @@ public class Main extends Application
 {
 	public static Stage stage;
 	public static Boolean killThread;
+	public static User user;
 	
 	
 	@Override
@@ -47,6 +50,7 @@ public class Main extends Application
 	}
 	
 	public static void main(String[] args) {
+		user = new User();
 		Main.killThread = false;
 		ExecutorService exe = Executors.newCachedThreadPool();
 		exe.execute(new Notifier());

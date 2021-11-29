@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import application.model.Event;
-import application.model.User;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,7 +21,7 @@ public class Notifier implements Runnable
 	@Override
 	public void run() 
 	{
-		User user;
+		makeDesktopNotification("Doctors Appointment!",  Color.DARKBLUE);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
 		LocalDateTime now;  
 		String before = "";
@@ -32,8 +31,10 @@ public class Notifier implements Runnable
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
 				System.out.println("Updated!\n");
-				user = (User) User.getSerializeUser();
-				ArrayList<Event> events = user.getEvents();
+				
+				Main.user.loadUser();
+				//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
+				ArrayList<Event> events = Main.user.getEvents();
 				String date = "";
 				String time = "";
 				String[] curTime = dtf.format(now).toString().split(" ");
@@ -69,7 +70,9 @@ public class Notifier implements Runnable
 					}
 				}
 				before = dtf.format(now).toString();
-				User.setSerializeUser(user);
+				
+				Main.user.saveUser();
+				//User.setSerializeUser(user);   COMMENTED BY BRIAN
 			}
 		}
 	}

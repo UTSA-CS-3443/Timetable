@@ -3,7 +3,6 @@ package application.controller;
 import application.Main;
 import application.model.Todo;
 import application.model.TodoList;
-import application.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -24,22 +23,26 @@ public class TodoListController{
 	@FXML
 	private TextField addText = new TextField();
 	
-	private User user;
-	
 	@FXML
 	public void initialize() {
-		user = (User) User.getSerializeUser();
+		Main.user.loadUser();
+		//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
 		gridPane = new GridPane();		
-		updateTodo(user.getTodo());
+		updateTodo(Main.user.getTodo());
 	}
 	
 	@FXML
 	public void addTodoFromButton(MouseEvent e) {
-		user.addTodo(addText.getText());
+		Main.user.addTodo(addText.getText());
 		//user = (User) User.getSerializeUser();
-		updateTodo(user.getTodo());
+		
+		
+		updateTodo(Main.user.getTodo());
 		addText.clear();
-		User.setSerializeUser(user);
+		
+		//User user = new User();
+		Main.user.saveUser();
+		//User.setSerializeUser(user);   COMMENTED BY BRIAN
 	}
 	
 	@FXML

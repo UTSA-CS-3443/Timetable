@@ -2,24 +2,13 @@ package application.controller;
 
 import application.Main;
 import application.model.Settings;
-import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
@@ -46,7 +35,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     //private Media media;
     //private MediaPlayer mediaPlayer;
     
-    private User user;
+    //private User user;
     private Settings settings;
 
     @Override
@@ -66,7 +55,10 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         } else {
             ///User goes here
         }
-        User.setSerializeUser(user);
+        
+        //User user = new User();
+        Main.user.saveUser();
+        //User.setSerializeUser(user);   COMMENTED BY BRIAN
     }
 
     /*public void playMedia() {
@@ -108,8 +100,10 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    	user = (User) User.getSerializeUser();
-    	settings = user.getSettings();
+    	Main.user.loadUser();
+    	
+    	//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
+    	settings = Main.user.getSettings();
     	
         //media = new Media(settings.alarmSound);
         //mediaPlayer = new MediaPlayer(media);

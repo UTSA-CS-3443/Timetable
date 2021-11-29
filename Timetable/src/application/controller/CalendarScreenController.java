@@ -2,7 +2,6 @@ package application.controller;
 
 import application.Main;
 import application.model.Event;
-import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -207,7 +206,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int firstDayOfMonth; // NOTE: Base 1
 	private int selectedMonth;   // NOTE: Base 1
 	private int selectedYear;
-	private User user;
+	//private User user;
 	
 	public void initialize()
 	{
@@ -248,7 +247,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
-		user = (User) User.getSerializeUser();
+		//User user = new User();
+		Main.user.loadUser();
+		//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
+		
 		curCalEvents = new ArrayList<Rectangle>();
 		displayCalEvents();
 		
@@ -433,15 +435,16 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	
 	private void displayCalEvents() 
 	{
+	
 		resetEvents();
 		// Get the number of events per date this month:
 		HashMap<String, Integer[]> numEventsPerDate = new HashMap<String, Integer[]>(); // Integer[0] is total events this date, Integer[1] is how many have been shown thus far.
-		for (int i = 0; i < user.getEvents().size(); i++)
+		for (int i = 0; i < Main.user.getEvents().size(); i++)
 		{
-			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			int datesForCurEvent = Main.user.getEvents().get(i).getDates().size();
 			for (int dateNum = 0; dateNum < datesForCurEvent; dateNum++)
 			{
-				String curDate = user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
+				String curDate = Main.user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
 				if (numEventsPerDate.containsKey(curDate))
 				{
 					numEventsPerDate.get(curDate)[0]++;
@@ -454,17 +457,17 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 		
 		// Display rectangles on calendar to mark events:
-		for (int i = 0; i < user.getEvents().size(); i++)
+		for (int i = 0; i < Main.user.getEvents().size(); i++)
 		{
-			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			int datesForCurEvent = Main.user.getEvents().get(i).getDates().size();
 			for (int curDate = 0; curDate < datesForCurEvent; curDate++)
 			{
-				String[] date = user.getEvents().get(i).getDates().get(curDate).split("_");
+				String[] date = Main.user.getEvents().get(i).getDates().get(curDate).split("_");
 				String[] yearMonthDay = date[0].split("-");
 				if (Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[0]) == selectedYear) // If this event happens this month, this year:
 				{
 					Rectangle eventBar = new Rectangle();
-					eventBar.setFill(user.getEvents().get(i).getColor());
+					eventBar.setFill(Main.user.getEvents().get(i).getColor());
 					eventBar.setHeight(this.CAL_EVENT_REC_HEIGHT);
 					eventBar.setWidth(45.0);
 					eventBar.setOpacity(1.0);
@@ -493,16 +496,16 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		resetSidePanelEvents();
 		// Get the events that occur on selectedDay:
 		ArrayList<Event> curEvents = new ArrayList<Event>();
-		for (int i = 0; i < user.getEvents().size(); i++)
+		for (int i = 0; i < Main.user.getEvents().size(); i++)
 		{
-			int datesForCurEvent = user.getEvents().get(i).getDates().size();
+			int datesForCurEvent = Main.user.getEvents().get(i).getDates().size();
 			for (int dateNum = 0; dateNum < datesForCurEvent; dateNum++)
 			{
-				String curDate = user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
+				String curDate = Main.user.getEvents().get(i).getDates().get(dateNum).split("_")[0];
 				String[] yearMonthDay = curDate.split("-");
 				if (Integer.valueOf(yearMonthDay[0]) == selectedYear && Integer.valueOf(yearMonthDay[1]) == selectedMonth && Integer.valueOf(yearMonthDay[2]) == selectedDay)
 				{
-					curEvents.add(user.getEvents().get(i));
+					curEvents.add(Main.user.getEvents().get(i));
 				}
 			}
 		}
@@ -514,7 +517,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			// Get the description label correctly formatted:
 			Label curEventDesc = new Label();
 			curEventDesc.setText(curEvents.get(i).getDesc());
-			curEventDesc.setFont(new Font("Arial", 10));
+			curEventDesc.setFont(new Font("Arial", 12));
 			curEventDesc.setTextFill(curEvents.get(i).getColor());
 			
 			// Get time label correctly formatted:
@@ -531,13 +534,13 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 				{
 					hour = time.split(":")[0];
 				}
-				curEventTime.setText(hour + curEvents.get(i).getDates().get(0).split("_")[1].split(":")[1] + "PM");				
+				curEventTime.setText(hour + curEvents.get(i).getDates().get(0).split("_")[1].split(":")[1]);	//removed +"PM"			
 			}
 			else
 			{
-				curEventTime.setText(curEvents.get(i).getDates().get(0).split("_")[1] + "AM");		
+				curEventTime.setText(curEvents.get(i).getDates().get(0).split("_")[1]);		//removed +"PM"
 			}
-			curEventTime.setFont(new Font("Arial", 10));
+			curEventTime.setFont(new Font("Arial", 12));
 			curEventTime.setTextFill(curEvents.get(i).getColor());
 			
 			// Position labels:
