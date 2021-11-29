@@ -19,7 +19,7 @@ public class User extends Calendar implements Serializable{
      */
     public User() {
         super();
-        this.settings = new Settings();
+        this.settings = new Setting();
         this.todo = new TodoList();
     }
 
@@ -136,7 +136,7 @@ public class User extends Calendar implements Serializable{
      *
      * @return the settings
      */
-    public Settings getSettings() {
+    public Setting getSettings() {
         return settings;
     }
 
@@ -145,7 +145,7 @@ public class User extends Calendar implements Serializable{
      *
      * @param settings the settings to set
      */
-    public void setSettings(Settings settings) {
+    public void setSettings(Setting settings) {
         this.settings = settings;
     }
 

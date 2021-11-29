@@ -40,8 +40,13 @@ public class TodoListController{
 		addText.clear();
 	}
 	
+	@FXML
+	public void goBack(MouseEvent e) {
+		Main.
+	}
+	
 	public void addTodoFromList(int index, Todo todo) {
-		Label label = new Label(todo.getDesc());
+		Label label = new Label(todo.getDesc() + "	");
 		CheckBox checkBox = new CheckBox();
 		gridPane.addRow(index, label, checkBox);
 	}
