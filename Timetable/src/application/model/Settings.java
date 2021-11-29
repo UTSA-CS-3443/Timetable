@@ -1,15 +1,15 @@
 package application.model;
 
-import java.io.Serializable;
+//import java.io.Serializable;   COMMENTED BY BRIAN
 
 /**
  * The type Settings.
  */
-public class Settings implements Serializable{
+public class Settings{   //Removed implements serializable statement   COMMENTED BY BRIAN
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = 7974267776680377989L;
+	//private static final long serialVersionUID = 7974267776680377989L;    COMMENTED BY BRIAN
 	/**
      * The constant desktopNotifi.
      */
@@ -31,6 +31,12 @@ public class Settings implements Serializable{
     public Settings() {
     	desktopNotifi = false;
     	isMuted = false;
+        return;
+    }
+    
+    public Settings(boolean desktopNot, boolean muted) {
+    	desktopNotifi = desktopNot;
+    	isMuted = muted;
         return;
     }
 

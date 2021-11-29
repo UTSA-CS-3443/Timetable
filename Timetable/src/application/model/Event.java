@@ -10,23 +10,26 @@ public class Event
 	private ArrayList<String> dates;
 	private Color color;
 	private int timeToRemind;
-	private Boolean isPriority;
+	private boolean isPriority;
 	private String desc;
-	private Boolean isCompleted;
-	private Boolean isMissed;
+	private boolean isCompleted;
+	private boolean isMissed;
 	private String ID;
 	
-	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, ArrayList<String> dates)
+	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, boolean isCompleted, boolean isMissed, ArrayList<String> dates)
 	{
 		this.color = color;
 		this.timeToRemind = timeToRemind;
 		this.isPriority = isPriority;
 		this.desc = desc;
 		this.dates = dates;
+		this.isCompleted = isCompleted;
+		this.isMissed = isMissed;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();
 		this.ID = (String) dtf.format(now); // Generates an id which is the time of creation. 
 	}
+	
 	
 	public void addDate(String date)
 	{

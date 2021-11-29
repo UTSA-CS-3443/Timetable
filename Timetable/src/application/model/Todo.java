@@ -1,13 +1,13 @@
 package application.model;
 
-import java.io.Serializable;
+//import java.io.Serializable;   COMMENTED BY BRIAN
 
-public class Todo implements Serializable{
+public class Todo{   // deleted implements serializable statement    COMMENTED BY BRIAN
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 176106504250255994L;
+	//private static final long serialVersionUID = 176106504250255994L;   COMMENTED BY BRIAN
 	private String desc;
 	private boolean isDone;
 	
@@ -17,6 +17,14 @@ public class Todo implements Serializable{
 	public Todo(String desc) {
 		this.desc = desc;
 		isDone = false;
+	}
+	
+	/**
+	 * Class constructor adding description and setting isDone to false.
+	 */
+	public Todo(String desc, boolean isDone) {
+		this.desc = desc;
+		this.isDone = isDone;
 	}
 	
 	/**
