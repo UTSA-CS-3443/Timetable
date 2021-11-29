@@ -26,12 +26,12 @@ public class Notifier implements Runnable
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
 		LocalDateTime now;  
 		String before = "";
-		makeDesktopNotification("Test this ia test al;kdfsja;slkdfjkasl;dfj;alskdfj;laskfj;laskfjasl;fjasd;lfkasdf;lkj", Color.RED);
-		while (true)
+		while (!Main.killThread)
 		{
 			now = LocalDateTime.now();
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
+				System.out.println("Updated!\n");
 				user = (User) User.getSerializeUser();
 				ArrayList<Event> events = user.getEvents();
 				String date = "";
@@ -67,8 +67,8 @@ public class Notifier implements Runnable
 							events.get(i).setTimeToRemind(events.get(i).getTimeToRemind() - 5);
 						}
 					}
-					before = now.toString();
 				}
+				before = dtf.format(now).toString();
 				User.setSerializeUser(user);
 			}
 		}

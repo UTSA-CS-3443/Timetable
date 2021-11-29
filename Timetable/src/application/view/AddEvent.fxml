@@ -43,7 +43,7 @@
          <font>
             <Font name="Bell MT" size="17.0" />
          </font></TextArea>
-      <Button fx:id="addEvent" layoutX="354.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#addEventClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Add Event">
+      <Button fx:id="addEvent" layoutX="264.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#addEventClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Add Event">
          <font>
             <Font size="18.0" />
          </font>
@@ -76,5 +76,10 @@
             <Font name="Bell MT Bold" size="17.0" />
          </font>
       </Label>
+      <Button fx:id="back" layoutX="414.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#backClicked" style="-fx-background-color: black; -fx-text-fill: white;" text="Back">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

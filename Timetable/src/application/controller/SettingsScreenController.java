@@ -1,6 +1,8 @@
 package application.controller;
 
+import application.Main;
 import application.model.Settings;
+import application.model.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -41,8 +43,11 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     public Button oneSelection;
     public Button threeSelection;
     public Button fourSelection;
-    private Media media;
-    private MediaPlayer mediaPlayer;
+    //private Media media;
+    //private MediaPlayer mediaPlayer;
+    
+    private User user;
+    private Settings settings;
 
     @Override
     public void handle(ActionEvent actionEvent) {
@@ -51,11 +56,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         } else if (actionEvent.getSource() == desktopNotif) {
             desktopNotifButton();
         } else if (actionEvent.getSource() == homeButton) {
-            try {
-                switchToMain(actionEvent);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        	Main.sceneSwitcher("CalendarScreen.fxml");
         } else if (actionEvent.getSource() == oneSelection) {
             ///user goes here's
         } else if (actionEvent.getSource() == twoSelection) {
@@ -65,36 +66,28 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         } else {
             ///User goes here
         }
+        User.setSerializeUser(user);
     }
 
-
-    private void switchToMain(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/CalendarScreen.fxml")));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void playMedia() {
+    /*public void playMedia() {
         mediaPlayer.play();
     }
 
     public void stopMedia() {
         mediaPlayer.stop();
-    }
+    }*/
 
     /**
      * Mute button toggle.
      */
     public void muteButtonToggle() {
-        if (Boolean.TRUE.equals(Settings.isMuted)) {
-            Settings.isMuted = false;
-            stopMedia();
+        if (Boolean.TRUE.equals(settings.getIsMuted())) {
+            settings.setIsMuted(false);
+            //stopMedia();
             muteButton.setStyle(COLOR_STYLE_RED);
         } else {
-            Settings.isMuted = true;
-            playMedia();
+        	settings.setIsMuted(true);
+            //playMedia();
             muteButton.setStyle(COLOR_STYLE_GREEN);
         }
     }
@@ -103,11 +96,11 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
      * Desktop notif button.
      */
     public void desktopNotifButton() {
-        if (Boolean.TRUE.equals(Settings.desktopNotifi)) {
-            Settings.desktopNotifi = false;
+        if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
+            settings.setDesktopNotifi(false);
             desktopNotif.setStyle(COLOR_STYLE_RED);
         } else {
-            Settings.desktopNotifi = true;
+        	settings.setDesktopNotifi(true);
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
         }
     }
@@ -115,21 +108,21 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        media = new Media(Settings.alarmSound);
-        mediaPlayer = new MediaPlayer(media);
-        if (Boolean.TRUE.equals(Settings.desktopNotifi) || Boolean.FALSE.equals(Settings.desktopNotifi)) {
-            if (Boolean.TRUE.equals(Settings.desktopNotifi)) {
-                desktopNotif.setStyle(COLOR_STYLE_GREEN);
-            } else {
-                desktopNotif.setStyle(COLOR_STYLE_RED);
-            }
+    	user = (User) User.getSerializeUser();
+    	settings = user.getSettings();
+    	
+        //media = new Media(settings.alarmSound);
+        //mediaPlayer = new MediaPlayer(media);
+        if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
+            desktopNotif.setStyle(COLOR_STYLE_GREEN);
+        } else {
+            desktopNotif.setStyle(COLOR_STYLE_RED);
         }
-        if (Boolean.TRUE.equals(Settings.isMuted) || Boolean.FALSE.equals(Settings.isMuted)) {
-            if (Boolean.TRUE.equals(Settings.isMuted)) {
-                muteButton.setStyle(COLOR_STYLE_GREEN);
-            } else {
-                muteButton.setStyle(COLOR_STYLE_RED);
-            }
+        
+        if (Boolean.TRUE.equals(settings.getIsMuted())) {
+            muteButton.setStyle(COLOR_STYLE_GREEN);
+        } else {
+            muteButton.setStyle(COLOR_STYLE_RED);
         }
     }
 }
