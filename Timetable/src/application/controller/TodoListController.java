@@ -36,13 +36,15 @@ public class TodoListController{
 	@FXML
 	public void addTodoFromButton(MouseEvent e) {
 		user.addTodo(addText.getText());
+		//user = (User) User.getSerializeUser();
 		updateTodo(user.getTodo());
 		addText.clear();
+		User.setSerializeUser(user);
 	}
 	
 	@FXML
 	public void goBack(MouseEvent e) {
-		Main.
+		Main.sceneSwitcher("CalendarScreen.fxml");
 	}
 	
 	public void addTodoFromList(int index, Todo todo) {
