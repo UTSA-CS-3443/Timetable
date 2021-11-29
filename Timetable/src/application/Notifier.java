@@ -21,7 +21,6 @@ public class Notifier implements Runnable
 	@Override
 	public void run() 
 	{
-		makeDesktopNotification("Doctors Appointment!",  Color.DARKBLUE);
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
 		LocalDateTime now;  
 		String before = "";
