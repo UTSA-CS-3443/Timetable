@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import javafx.scene.paint.Color;
 
-public abstract class Calendar 
+public abstract class Calendar
 {
 	private ArrayList<Event> events;
 	

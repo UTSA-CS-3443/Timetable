@@ -5,9 +5,13 @@ import java.io.*;
 /**
  * The type User.
  */
-public class User extends Calendar {
-    private String name;
-    private Setting settings;
+public class User extends Calendar implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3284827858548718129L;
+	private String name;
+    private Settings settings;
     private TodoList todo;
 
     /**
@@ -95,7 +99,7 @@ public class User extends Calendar {
     public void updateSettings(String option, String value) {
         switch (option) {
             case "alarm":
-                this.settings.setAlarmSound(value);
+                //this.settings.setAlarmSound(value);
                 break;
             case "desktop":
                 this.settings.setDesktopNotifi(Boolean.valueOf(value));
@@ -104,7 +108,7 @@ public class User extends Calendar {
                 this.settings.setIsMuted(Boolean.valueOf(value));
                 break;
             case "interval":
-                this.settings.setPriorityInterval(Integer.valueOf(value));
+                //this.settings.setPriorityInterval(Integer.valueOf(value));
                 break;
         }
     }

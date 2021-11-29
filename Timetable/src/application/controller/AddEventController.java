@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.Main;
+import application.model.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -52,6 +53,7 @@ public class AddEventController implements EventHandler<ActionEvent>
 	@FXML
 	private Label mandatoryFieldLabel;
 	
+	private User user;
 	
 	public void initialize()
 	{
@@ -66,6 +68,7 @@ public class AddEventController implements EventHandler<ActionEvent>
 	
 	public void addEventClicked(MouseEvent event)
 	{
+		user = (User) User.getSerializeUser();
 		//This section checks all mandatory fields have been filled out. Throws label error if not.
 		int mandatoryFields = 0;
 		if(eventStartDate.getValue() == null){eventStartDateLabel.setTextFill(Color.RED); mandatoryFields++;}
@@ -109,14 +112,14 @@ public class AddEventController implements EventHandler<ActionEvent>
 		
 		
 		//Passes this forms data into a new event. Then switches the back to the Calendar screen.
-		Main.user.addEvent(eventColor.getValue(), timeToRemind, eventPriority.isSelected(), descOfEvent.getText(), days);
+		user.addEvent(eventColor.getValue(), timeToRemind, eventPriority.isSelected(), descOfEvent.getText(), days);
 		Main.sceneSwitcher("CalendarScreen.fxml");
+		User.setSerializeUser(user);
 	}
 	
 	public void backClicked(MouseEvent event)
 	{
-		
-		
+		Main.sceneSwitcher("CalendarScreen.fxml");
 	}
 
 }

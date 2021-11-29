@@ -1,9 +1,14 @@
 package application.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TodoList {
+public class TodoList implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2157984073652890059L;
 	private ArrayList<Todo> tasks;
 	private int taskID; //taskID is used as an internal variable for indexing tasks.
 	

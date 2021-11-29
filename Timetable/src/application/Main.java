@@ -1,9 +1,13 @@
 package application;
 	
-import application.model.User;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
@@ -12,6 +16,7 @@ import javafx.scene.control.SplitPane;
 public class Main extends Application 
 {
 	public static Stage stage;
+	public static Boolean killThread;
 	
 	
 	@Override
@@ -26,6 +31,14 @@ public class Main extends Application
 			Scene scene = new Scene (root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			stage = primaryStage;
+			stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			    @Override
+			    public void handle(WindowEvent t) {
+			        Platform.exit();
+			        System.exit(0);
+			    }
+			});
 		} 
 		catch(Exception e) 
 		{
@@ -34,8 +47,16 @@ public class Main extends Application
 	}
 	
 	public static void main(String[] args) {
-		Notifier not = new Notifier();
-		not.start();
+		Main.killThread = false;
+		ExecutorService exe = Executors.newCachedThreadPool();
+		exe.execute(new Notifier());
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+	        public void run() {
+	            killThread = true;
+	        }
+	    }, "Shutdown-thread"));
+		/*Notifier not = new Notifier();
+		not.start();*/
 		launch(args);
 	}
   
@@ -54,7 +75,7 @@ public class Main extends Application
 		try 
 		{
 			Parent root = FXMLLoader.load(Main.class.getResource("view/" + switchTo));
-			if(switchTo.equals("CalendarScreen.fxml"))
+			if(switchTo.equals("CalendarScreen.fxml") || switchTo.equals("Settings.fxml"))
 			{
 				stage.setScene(new Scene(root, 800, 500));
 			}
@@ -66,8 +87,8 @@ public class Main extends Application
 			stage.show();
 
 		} catch(Exception e) 
-			{
-				e.printStackTrace();
-			}
+		{
+			e.printStackTrace();
+		}
 	}
 }
