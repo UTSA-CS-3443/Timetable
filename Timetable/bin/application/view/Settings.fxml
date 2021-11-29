@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SettingsScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SettingsScreenController">
    <children>
       <ToggleButton fx:id="muteButton" layoutX="525.0" layoutY="142.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: black; -fx-text-fill: white;" text="On/Off">
          <font>
@@ -27,5 +32,10 @@
             <Font name="Bell MT" size="45.0" />
          </font>
       </ToggleButton>
+      <Button fx:id="homeButton" layoutX="76.0" layoutY="29.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: black;" text="Home" textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="45.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

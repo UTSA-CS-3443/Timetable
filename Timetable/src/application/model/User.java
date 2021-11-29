@@ -19,7 +19,7 @@ public class User extends Calendar implements Serializable{
      */
     public User() {
         super();
-        this.settings = new Setting();
+        this.settings = new Settings();
         this.todo = new TodoList();
     }
 
@@ -29,17 +29,37 @@ public class User extends Calendar implements Serializable{
      * @return the serialize user
      */
     public static Object getSerializeUser() {
-    	try 
+    	File fileOut = new File("User.txt");
+    	if (fileOut.exists()) 
     	{
-	        FileInputStream fileInputStream = new FileInputStream("User.txt");
-	        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-	        objectInputStream.close();
-	        return objectInputStream.readObject();
+    		try 
+        	{
+    	        FileInputStream fileInputStream = new FileInputStream("User.txt");
+    	        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+    	        Object obj = objectInputStream.readObject();
+    	        objectInputStream.close();
+    	        return obj;
+        	}
+        	catch (Exception e)
+        	{
+    	       e.printStackTrace();
+        	}
     	}
-    	catch (Exception e)
+    	else
     	{
-    		return new User();
+	    	try 
+	    	{
+	    		FileOutputStream fileOutputStream;
+				fileOutputStream = new FileOutputStream(fileOut);
+				fileOutputStream.close();
+				return (Object) new User();
+	    	}
+	    	catch (Exception e)
+	    	{
+		        e.printStackTrace();
+	    	}
     	}
+    	return null;
     }
 
     /**
@@ -136,7 +156,7 @@ public class User extends Calendar implements Serializable{
      *
      * @return the settings
      */
-    public Setting getSettings() {
+    public Settings getSettings() {
         return settings;
     }
 
@@ -145,7 +165,7 @@ public class User extends Calendar implements Serializable{
      *
      * @param settings the settings to set
      */
-    public void setSettings(Setting settings) {
+    public void setSettings(Settings settings) {
         this.settings = settings;
     }
 

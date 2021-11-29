@@ -89,7 +89,7 @@ public class AddEventController implements EventHandler<ActionEvent>
 		if(remindMinutes.getValue() == null){remindMinutes.setValue("0");}
 		
 		//Calculates the time to remind before the event starts.
-		int timeToRemind = Integer.parseInt(remindHours.getValue()) * 60 + Integer.parseInt(remindMinutes.getValue());
+		int timeToRemind = Integer.valueOf(remindHours.getValue()) * 60 + Integer.valueOf(remindMinutes.getValue());
 			
 		
 		//This section calculates the days between the start and end provided, then fills an ArrayList with the appropriate day format.

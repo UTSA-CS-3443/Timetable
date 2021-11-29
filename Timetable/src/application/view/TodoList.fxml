@@ -26,6 +26,6 @@
       </ScrollPane>
       <TextField fx:id="addText" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" promptText="What do you need to do?" />
       <Button fx:id="addButton" layoutX="360.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addTodoFromButton" text="Add Todo" />
-      <Button layoutX="736.0" layoutY="15.0" mnemonicParsing="false" text="Back" />
+      <Button fx:id="backButton" layoutX="736.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Back" />
    </children>
 </AnchorPane>

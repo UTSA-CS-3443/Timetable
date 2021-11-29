@@ -1,7 +1,13 @@
 package application.model;
 
-public class Todo {
+import java.io.Serializable;
+
+public class Todo implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 176106504250255994L;
 	private String desc;
 	private boolean isDone;
 	
