@@ -54,27 +54,31 @@ public class Notifier implements Runnable
 						System.out.println("Current time (min): " + curTimeMinutes + " - Date time (min): " + dateTimeMinutes);
 						System.out.println("Current date: " + curTime[0] + " - Event date: " + date);
 						System.out.println("Current time: " + curTime[1] + " - Event time: " + time);
+						System.out.println("Time to remind: " + (dateTimeMinutes - events.get(i).getTimeToRemind()));
 						
 						if (date.equals(curTime[0]) && time.equals(curTime[1])) // This event happens now:
 						{
 							makeDesktopNotification("Event Happening Now:\n" + events.get(i).getDesc(), events.get(i).getColor());
 							events.get(i).setIsCompleted(true);
-							// TODO: remove the date. If no more dates, remove event.
+							events.get(i).removeDate(curDates.get(j)); // Remove this date from the event.
 						}
-						else if (date.equals(curTime[0]) && curTimeMinutes == (dateTimeMinutes - events.get(i).getTimeToRemind())) // If event reminder time is now:
+						else if ((events.get(i).getTimeToRemind() != 0) && date.equals(curTime[0]) && curTimeMinutes == (dateTimeMinutes - events.get(i).getTimeToRemind())) // If event reminder time is now:
 						{
 							makeDesktopNotification("Event Happening in " + events.get(i).getTimeToRemind() + " minutes:\n" + events.get(i).getDesc(), events.get(i).getColor());
+							if (events.get(i).getIsPriority())
+							{
+								events.get(i).setTimeToRemind(events.get(i).getTimeToRemind() - 5);
+							}
 						}
-						if (events.get(i).getIsPriority())
-						{
-							events.get(i).setTimeToRemind(events.get(i).getTimeToRemind() - 5);
-						}
+					}
+					if (events.get(i).getDates().size() == 0) // If there are no more dates in this event, remove event.
+					{
+						events.remove(i);
 					}
 				}
 				before = dtf.format(now).toString();
 				
 				Main.user.saveUser();
-				//User.setSerializeUser(user);   COMMENTED BY BRIAN
 			}
 		}
 	}
