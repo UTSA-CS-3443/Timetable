@@ -66,7 +66,7 @@ public class Notifier implements Runnable
 		int missedSizeNotY = 100; // Extended size of notification window in the Y axis.
 		for (int i = 0; i < missedEvents.size(); i++)
 		{
-			message += missedEvents.get(i).get(0) + " - " + missedEvents.get(i).get(1) + "\n";
+			message += missedEvents.get(i).get(0).replace("_", " ") + " - " + missedEvents.get(i).get(1) + "\n";
 			missedSizeNotY += 60;
 		}
 		notification = new AudioClip(new File(Main.user.getSettings().getAlarmSound()).toURI().toString());
