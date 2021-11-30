@@ -12,8 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -21,9 +19,8 @@ import javafx.stage.StageStyle;
 
 public class Notifier implements Runnable
 {
+	private final String DEFAULT_NOTIFICATION_SOUND = "res/Notification/notification_alert.mp3";
 	private Thread t;
-	//private Media media;
-    //private MediaPlayer mediaPlayer;
 	private AudioClip notification;
 	
 	@Override
@@ -41,9 +38,7 @@ public class Notifier implements Runnable
 			{
 				Main.user.loadUser();
 				// Get latest sound:
-				//media = new Media(new File("res/Notification/notification_alert.mp3").toURI().toString());
-				//mediaPlayer = new MediaPlayer(media);
-				notification = new AudioClip(new File("res/Notification/notification_alert.mp3").toURI().toString());
+				notification = new AudioClip(new File(DEFAULT_NOTIFICATION_SOUND).toURI().toString());
 				
 				ArrayList<Event> events = Main.user.getEvents();
 				String date = "";
