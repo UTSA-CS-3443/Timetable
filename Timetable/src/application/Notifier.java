@@ -29,8 +29,6 @@ public class Notifier implements Runnable
 			now = LocalDateTime.now();
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
-				System.out.println("Updated!\n");
-				
 				Main.user.loadUser();
 				//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
 				ArrayList<Event> events = Main.user.getEvents();
@@ -45,6 +43,7 @@ public class Notifier implements Runnable
 					{
 						date = curDates.get(j).split("_")[0];
 						time = curDates.get(j).split("_")[1];
+						curTime[0] = curTime[0].replace("/", "-");
 						// Get current time in minutes:
 						int curTimeMinutes = 0;
 						curTimeMinutes = Integer.valueOf(curTime[1].split(":")[0]) * 60;
@@ -52,13 +51,17 @@ public class Notifier implements Runnable
 						int dateTimeMinutes = 0;
 						dateTimeMinutes = Integer.valueOf(time.split(":")[0]) * 60;
 						dateTimeMinutes += Integer.valueOf(time.split(":")[1]);
+						System.out.println("Current time (min): " + curTimeMinutes + " - Date time (min): " + dateTimeMinutes);
+						System.out.println("Current date: " + curTime[0] + " - Event date: " + date);
+						System.out.println("Current time: " + curTime[1] + " - Event time: " + time);
 						
 						if (date.equals(curTime[0]) && time.equals(curTime[1])) // This event happens now:
 						{
 							makeDesktopNotification("Event Happening Now:\n" + events.get(i).getDesc(), events.get(i).getColor());
 							events.get(i).setIsCompleted(true);
+							// TODO: remove the date. If no more dates, remove event.
 						}
-						else if (date.equals(curTime[0]) && curTimeMinutes == (dateTimeMinutes + events.get(i).getTimeToRemind())) // If event reminder time is now:
+						else if (date.equals(curTime[0]) && curTimeMinutes == (dateTimeMinutes - events.get(i).getTimeToRemind())) // If event reminder time is now:
 						{
 							makeDesktopNotification("Event Happening in " + events.get(i).getTimeToRemind() + " minutes:\n" + events.get(i).getDesc(), events.get(i).getColor());
 						}
@@ -87,28 +90,31 @@ public class Notifier implements Runnable
 	
 	private void makeDesktopNotification(String message, Color color)
 	{
-		Platform.runLater(() -> {
-	        Stage owner = new Stage(StageStyle.UTILITY);
-	        StackPane root = new StackPane();
-	        root.setStyle("-fx-background-color: WHITE");
-	        Label mes = new Label();
-	        mes.setText(message);
-	        mes.setFont(new Font("Arial", 20));
-	        mes.setWrapText(true);
-	        mes.setTextFill(color);
-	        root.getChildren().add(mes);
-	        root.setAlignment(Pos.TOP_LEFT);
-	        StackPane.setMargin(mes, new Insets(20, 0, 0, 30));
-	        Scene scene = new Scene(root, 1, 1);
-	        scene.setFill(Color.WHITE);
-	        owner.setScene(scene);
-	        owner.setWidth(500);
-	        owner.setHeight(200);
-	        owner.setX(100);
-	        owner.setY(0);
-	        owner.toFront();
-	        owner.show();
+		if (Main.user.getSettings().getDesktopNotifi())
+		{
+			Platform.runLater(() -> {
+		        Stage owner = new Stage(StageStyle.UTILITY);
+		        StackPane root = new StackPane();
+		        root.setStyle("-fx-background-color: WHITE");
+		        Label mes = new Label();
+		        mes.setText(message);
+		        mes.setFont(new Font("Arial", 20));
+		        mes.setWrapText(true);
+		        mes.setTextFill(color);
+		        root.getChildren().add(mes);
+		        root.setAlignment(Pos.TOP_LEFT);
+		        StackPane.setMargin(mes, new Insets(20, 0, 0, 30));
+		        Scene scene = new Scene(root, 1, 1);
+		        scene.setFill(Color.WHITE);
+		        owner.setScene(scene);
+		        owner.setWidth(500);
+		        owner.setHeight(200);
+		        owner.setX(100);
+		        owner.setY(0);
+		        owner.toFront();
+		        owner.show();
+			}
+			);
 		}
-		);
 	}
 }
