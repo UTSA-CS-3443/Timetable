@@ -110,6 +110,7 @@ public class Notifier implements Runnable
 	{
 		if (Main.user.getSettings().getDesktopNotifi())
 		{
+			System.out.println(Main.user.getSettings().getIsMuted());
 			if (!Main.user.getSettings().getIsMuted())
 			{
 				//mediaPlayer.play();
