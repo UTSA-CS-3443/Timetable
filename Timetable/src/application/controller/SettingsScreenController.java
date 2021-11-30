@@ -34,7 +34,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         if (actionEvent.getSource() == muteButton) {
             muteButtonToggle();
         } else if (actionEvent.getSource() == desktopNotif) {
-            desktopNotifButton();
+            desktopNotifButtonToggle();
         } else if (actionEvent.getSource() == homeButton) {
         	Main.sceneSwitcher("CalendarScreen.fxml");
         }
@@ -49,22 +49,26 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         if (Boolean.TRUE.equals(settings.getIsMuted())) {
             settings.setIsMuted(false);
             muteButton.setStyle(COLOR_STYLE_RED);
+            muteButton.setText("Off");
         } else {
         	settings.setIsMuted(true);
             muteButton.setStyle(COLOR_STYLE_GREEN);
+            muteButton.setText("On");
         }
     }
 
     /**
      * Desktop notif button.
      */
-    public void desktopNotifButton() {
+    public void desktopNotifButtonToggle() {
         if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
             settings.setDesktopNotifi(false);
             desktopNotif.setStyle(COLOR_STYLE_RED);
+            desktopNotif.setText("Off");
         } else {
         	settings.setDesktopNotifi(true);
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
+            desktopNotif.setText("On");
         }
     }
 
@@ -78,14 +82,17 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     	// Set buttons to correct style:
         if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
+            desktopNotif.setText("On");
         } else {
             desktopNotif.setStyle(COLOR_STYLE_RED);
+            desktopNotif.setText("Off");
         }
-        
         if (Boolean.TRUE.equals(settings.getIsMuted())) {
             muteButton.setStyle(COLOR_STYLE_GREEN);
+            muteButton.setText("On");
         } else {
             muteButton.setStyle(COLOR_STYLE_RED);
+            muteButton.setText("Off");
         }
     }
 }
