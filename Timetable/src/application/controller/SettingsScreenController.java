@@ -83,6 +83,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     	FileChooser file = new FileChooser();
     	file.setTitle("Choose Sound File");
     	File soundFile = file.showOpenDialog(Main.stage);
+    	System.out.println(soundFile.toString());
+    	Main.user.getSettings().setAlarmSound(soundFile.toString());
+    	// TODO: Implement saving sound file.
     }
 
 
