@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.FileChooser;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +26,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
      */
     @FXML
     public ToggleButton muteButton;
+    public Button chooseSoundButton;
     public Button homeButton;
     
     //private User user;
@@ -37,6 +40,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
             desktopNotifButtonToggle();
         } else if (actionEvent.getSource() == homeButton) {
         	Main.sceneSwitcher("CalendarScreen.fxml");
+        } else if (actionEvent.getSource() == chooseSoundButton)
+        {
+        	chooseSound();
         }
         
         Main.user.saveUser();
@@ -70,6 +76,13 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
             desktopNotif.setText("On");
         }
+    }
+    
+    private void chooseSound()
+    {
+    	FileChooser file = new FileChooser();
+    	file.setTitle("Choose Sound File");
+    	File soundFile = file.showOpenDialog(Main.stage);
     }
 
 

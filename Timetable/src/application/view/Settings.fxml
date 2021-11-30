@@ -42,10 +42,10 @@
             <Font name="Bell MT" size="45.0" />
          </font>
       </Label>
-      <ToggleButton fx:id="chooseSoundButton" layoutX="523.0" layoutY="392.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: black; -fx-text-fill: white;" text="Choose">
+      <Button fx:id="chooseSoundButton" layoutX="523.0" layoutY="389.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: black;" text="Choose" textFill="WHITE">
          <font>
             <Font name="Bell MT" size="45.0" />
          </font>
-      </ToggleButton>
+      </Button>
    </children>
 </AnchorPane>
