@@ -1,8 +1,11 @@
 package application.controller;
 
+import java.util.ArrayList;
+
 import application.Main;
 import application.model.Todo;
 import application.model.TodoList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -26,23 +29,16 @@ public class TodoListController{
 	@FXML
 	public void initialize() {
 		Main.user.loadUser();
-		//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
 		gridPane = new GridPane();		
 		updateTodo(Main.user.getTodo());
 	}
 	
 	@FXML
 	public void addTodoFromButton(MouseEvent e) {
-		Main.user.addTodo(addText.getText());
-		//user = (User) User.getSerializeUser();
-		
-		
+		Main.user.addTodo(addText.getText() + "	");
 		updateTodo(Main.user.getTodo());
 		addText.clear();
-		
-		//User user = new User();
 		Main.user.saveUser();
-		//User.setSerializeUser(user);   COMMENTED BY BRIAN
 	}
 	
 	@FXML
@@ -52,12 +48,28 @@ public class TodoListController{
 	
 	public void addTodoFromList(int index, Todo todo) {
 		Label label = new Label(todo.getDesc() + "	");
-		CheckBox checkBox = new CheckBox();
-		gridPane.addRow(index, label, checkBox);
+		Button button = new Button("Mark As Done!");
+		button.setId(String.valueOf(index));
+		
+		//Add the event handle to each new button created so that when they are clicked they will call the removeTodo function
+		button.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent e) {
+				removeTodo(e);
+			}
+		});
+		
+		//Finally add the new row to the gridpane
+		gridPane.addRow(index, label, button);
 	}
 	
-	public void removeTodo(int index) {
+	public void removeTodo(MouseEvent e) {
+		Button button = (Button)e.getSource();
+		Main.user.removeTodo(Integer.parseInt(button.getId()));
+		updateTodo(Main.user.getTodo());
 		
+		//Save the user's new information
+		Main.user.saveUser();
 	}
 	
 	public void updateTodo(TodoList tasks) {

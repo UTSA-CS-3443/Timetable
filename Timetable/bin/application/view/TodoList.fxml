@@ -12,8 +12,8 @@
          <content>
             <GridPane fx:id="gridPane" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="798.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="750.0" minWidth="10.0" prefWidth="748.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.0" minWidth="10.0" prefWidth="52.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="748.0" minWidth="748.0" prefWidth="748.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.0" minWidth="52.0" prefWidth="52.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -25,7 +25,7 @@
          </content>
       </ScrollPane>
       <TextField fx:id="addText" layoutX="14.0" layoutY="14.0" prefHeight="26.0" prefWidth="339.0" promptText="What do you need to do?" />
-      <Button fx:id="addButton" layoutX="360.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addTodoFromButton" text="Add Todo" />
+      <Button fx:id="addButton" defaultButton="true" layoutX="360.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#addTodoFromButton" text="Add Todo" />
       <Button fx:id="backButton" layoutX="736.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Back" />
    </children>
 </AnchorPane>
