@@ -96,7 +96,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     	if (soundFile != null)
     	{
 	    	Main.user.getSettings().setAlarmSound(soundFile.toString());
-	    	// TODO: Implement saving sound file.
+	    	Main.user.saveUser();
     	}
     }
 
