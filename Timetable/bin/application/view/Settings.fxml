@@ -37,5 +37,15 @@
             <Font name="Bell MT" size="45.0" />
          </font>
       </Button>
+      <Label layoutX="76.0" layoutY="405.0" style="-fx-text-fill: white;" text="Choose Sound">
+         <font>
+            <Font name="Bell MT" size="45.0" />
+         </font>
+      </Label>
+      <Button fx:id="chooseSoundButton" layoutX="523.0" layoutY="389.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: black;" text="Choose" textFill="WHITE">
+         <font>
+            <Font name="Bell MT" size="45.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

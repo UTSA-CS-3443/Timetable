@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.FileChooser;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,6 +26,7 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
      */
     @FXML
     public ToggleButton muteButton;
+    public Button chooseSoundButton;
     public Button homeButton;
     
     //private User user;
@@ -34,9 +37,12 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         if (actionEvent.getSource() == muteButton) {
             muteButtonToggle();
         } else if (actionEvent.getSource() == desktopNotif) {
-            desktopNotifButton();
+            desktopNotifButtonToggle();
         } else if (actionEvent.getSource() == homeButton) {
         	Main.sceneSwitcher("CalendarScreen.fxml");
+        } else if (actionEvent.getSource() == chooseSoundButton)
+        {
+        	chooseSound();
         }
         
         Main.user.saveUser();
@@ -49,23 +55,49 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         if (Boolean.TRUE.equals(settings.getIsMuted())) {
             settings.setIsMuted(false);
             muteButton.setStyle(COLOR_STYLE_RED);
+            muteButton.setText("Off");
         } else {
         	settings.setIsMuted(true);
             muteButton.setStyle(COLOR_STYLE_GREEN);
+            muteButton.setText("On");
         }
     }
 
     /**
      * Desktop notif button.
      */
-    public void desktopNotifButton() {
+    public void desktopNotifButtonToggle() {
         if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
             settings.setDesktopNotifi(false);
             desktopNotif.setStyle(COLOR_STYLE_RED);
+            desktopNotif.setText("Off");
         } else {
         	settings.setDesktopNotifi(true);
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
+            desktopNotif.setText("On");
         }
+    }
+    
+    private void chooseSound()
+    {
+    	FileChooser file = new FileChooser();
+    	file.setTitle("Choose Sound File");
+    	// Restrict to common audio file types:
+    	file.getExtensionFilters().addAll(
+    			new FileChooser.ExtensionFilter("MP3 Files", "*.mp3"),
+    			new FileChooser.ExtensionFilter("WAV Files", "*.wav"),
+    			new FileChooser.ExtensionFilter("M4A Files", "*.m4a"),
+    			new FileChooser.ExtensionFilter("OGG Files", "*.ogg"),
+    			new FileChooser.ExtensionFilter("WMA Files", "*.wma"),
+    			new FileChooser.ExtensionFilter("AAC Files", "*.aac")
+    			);
+    	
+    	File soundFile = file.showOpenDialog(Main.stage);
+    	if (soundFile != null)
+    	{
+	    	Main.user.getSettings().setAlarmSound(soundFile.toString());
+	    	Main.user.saveUser();
+    	}
     }
 
 
@@ -78,14 +110,17 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     	// Set buttons to correct style:
         if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
+            desktopNotif.setText("On");
         } else {
             desktopNotif.setStyle(COLOR_STYLE_RED);
+            desktopNotif.setText("Off");
         }
-        
         if (Boolean.TRUE.equals(settings.getIsMuted())) {
             muteButton.setStyle(COLOR_STYLE_GREEN);
+            muteButton.setText("On");
         } else {
             muteButton.setStyle(COLOR_STYLE_RED);
+            muteButton.setText("Off");
         }
     }
 }

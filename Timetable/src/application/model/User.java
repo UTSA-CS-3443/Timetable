@@ -65,9 +65,9 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		//Settings Related-----------------------------------------------------------------------------
 		//---------------------------------------------------------------------------------------------
     	try {
-		      File todoListObject = new File("Settings.txt");
-		      if (todoListObject.createNewFile()) {
-		        System.out.println("Settings File created: " + todoListObject.getName());
+		      File settingsObject = new File("Settings.txt");
+		      if (settingsObject.createNewFile()) {
+		        System.out.println("Settings File created: " + settingsObject.getName());
 		      } else {
 		        System.out.println("Settings File already exists.");
 		      }
@@ -77,11 +77,11 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		    }
 		
 		try {
-		      FileWriter todoWriter = new FileWriter("Settings.txt");
+		      FileWriter settingsWriter = new FileWriter("Settings.txt");
 		    //Saving data part
-		      todoWriter.write(settings.getDesktopNotifi() + "," + settings.getIsMuted() + "\n");
+		      settingsWriter.write(settings.getDesktopNotifi() + "," + settings.getIsMuted() + "," + settings.getAlarmSound() + "\n");
 		    //End of saving data part
-		      todoWriter.close();
+		      settingsWriter.close();
 		      System.out.println("Successfully wrote to the Settings file.");
 		    } catch (IOException e) {
 		      System.out.println("An error occurred while attempting to write to the Settings file.");
@@ -93,9 +93,9 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		//Events Related-----------------------------------------------------------------------------
 		//---------------------------------------------------------------------------------------------
     	try {
-		      File todoListObject = new File("Events.txt");
-		      if (todoListObject.createNewFile()) {
-		        System.out.println("Events File created: " + todoListObject.getName());
+		      File eventsObject = new File("Events.txt");
+		      if (eventsObject.createNewFile()) {
+		        System.out.println("Events File created: " + eventsObject.getName());
 		      } else {
 		        System.out.println("Events File already exists.");
 		      }
@@ -105,7 +105,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		    }
 		
 		try {
-		      FileWriter todoWriter = new FileWriter("Events.txt");
+		      FileWriter eventsWriter = new FileWriter("Events.txt");
 		    //Saving data part
 		      String dateConcat = "";
 		      for(Event event: this.getEvents())
@@ -114,12 +114,12 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		    	  {
 		    		  dateConcat += date + "-->";
 		    	  }
-		    	  todoWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
+		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
 		      }
 		      
 		    //End of saving data part
 		      
-		      todoWriter.close();
+		      eventsWriter.close();
 		      System.out.println("Successfully wrote to the Events file.");
 		    } catch (IOException e) {
 		      System.out.println("An error occurred while attempting to write to the Events file.");
@@ -176,7 +176,11 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		        
 		        boolean desktopNot = (splitSettingsData[0].equals("true")) ? true:false;
 		        boolean muted = (splitSettingsData[1].equals("true")) ? true:false;
-
+		        if (splitSettingsData.length == 3) // If there is an alarm sound saved
+	        	{
+		        	String alarmSound = splitSettingsData[2];
+		        	settings.setAlarmSound(alarmSound);
+	        	}
 		        settings.setDesktopNotifi(desktopNot);
 		        settings.setIsMuted(muted);
 		      }
