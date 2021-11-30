@@ -320,7 +320,7 @@
             <Rectangle fx:id="todoButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="71.0" layoutX="5.0" layoutY="216.0" onMouseClicked="#handleTodo" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
             <Rectangle fx:id="settingsButton" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="54.0" layoutX="6.0" layoutY="303.0" onMouseClicked="#handleSettings" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="58.0" />
          </children></AnchorPane>
-    <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: grey;">
+    <AnchorPane fx:id="sidePanel" minHeight="0.0" minWidth="0.0" prefHeight="498.0" prefWidth="217.0" style="-fx-background-color: white;">
          <children>
             <Rectangle fx:id="sidePanelTop" arcHeight="5.0" arcWidth="5.0" fill="#616161" height="42.0" layoutX="-2.0" layoutY="-4.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="189.0" />
             <Label layoutX="27.0" layoutY="5.0" text="Day's Events" textFill="WHITE">
