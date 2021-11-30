@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -18,19 +21,27 @@ import javafx.stage.StageStyle;
 public class Notifier implements Runnable
 {
 	private Thread t;
+	private Media media;
+    private MediaPlayer mediaPlayer;
+	
 	@Override
 	public void run() 
 	{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
 		LocalDateTime now;  
 		String before = "";
+		
+		// TODO: Remove all missed events (dates), notify user.
 		while (!Main.killThread)
 		{
 			now = LocalDateTime.now();
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
 				Main.user.loadUser();
-				//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
+				// Get latest sound:
+				media = new Media(new File("res/Notification/notification_alert.mp3").toURI().toString());
+				mediaPlayer = new MediaPlayer(media);
+				
 				ArrayList<Event> events = Main.user.getEvents();
 				String date = "";
 				String time = "";
@@ -96,6 +107,10 @@ public class Notifier implements Runnable
 	{
 		if (Main.user.getSettings().getDesktopNotifi())
 		{
+			if (!Main.user.getSettings().getIsMuted())
+			{
+				mediaPlayer.play();
+			}
 			Platform.runLater(() -> {
 		        Stage owner = new Stage(StageStyle.UTILITY);
 		        StackPane root = new StackPane();
