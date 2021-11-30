@@ -11,9 +11,6 @@ import javafx.scene.control.ToggleButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * The type Settings con.
- */
 public class SettingsScreenController implements EventHandler<ActionEvent>, Initializable {
     private static final String COLOR_STYLE_RED = "-fx-background-color: red";
     private static final String COLOR_STYLE_GREEN = "fx-background-color: green";
@@ -28,12 +25,6 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     @FXML
     public ToggleButton muteButton;
     public Button homeButton;
-    public Button twoSelection;
-    public Button oneSelection;
-    public Button threeSelection;
-    public Button fourSelection;
-    //private Media media;
-    //private MediaPlayer mediaPlayer;
     
     //private User user;
     private Settings settings;
@@ -46,28 +37,10 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
             desktopNotifButton();
         } else if (actionEvent.getSource() == homeButton) {
         	Main.sceneSwitcher("CalendarScreen.fxml");
-        } else if (actionEvent.getSource() == oneSelection) {
-            ///user goes here's
-        } else if (actionEvent.getSource() == twoSelection) {
-            ///User goes here
-        } else if (actionEvent.getSource() == threeSelection) {
-            ///User goes here
-        } else {
-            ///User goes here
         }
         
-        //User user = new User();
         Main.user.saveUser();
-        //User.setSerializeUser(user);   COMMENTED BY BRIAN
     }
-
-    /*public void playMedia() {
-        mediaPlayer.play();
-    }
-
-    public void stopMedia() {
-        mediaPlayer.stop();
-    }*/
 
     /**
      * Mute button toggle.
@@ -75,11 +48,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     public void muteButtonToggle() {
         if (Boolean.TRUE.equals(settings.getIsMuted())) {
             settings.setIsMuted(false);
-            //stopMedia();
             muteButton.setStyle(COLOR_STYLE_RED);
         } else {
         	settings.setIsMuted(true);
-            //playMedia();
             muteButton.setStyle(COLOR_STYLE_GREEN);
         }
     }
@@ -102,11 +73,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	Main.user.loadUser();
     	
-    	//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
     	settings = Main.user.getSettings();
     	
-        //media = new Media(settings.alarmSound);
-        //mediaPlayer = new MediaPlayer(media);
+    	// Set buttons to correct style:
         if (Boolean.TRUE.equals(settings.getDesktopNotifi())) {
             desktopNotif.setStyle(COLOR_STYLE_GREEN);
         } else {
