@@ -7,7 +7,7 @@ import javafx.scene.paint.Color;
 
 public class Event 
 {
-	private ArrayList<String> dates;
+	private ArrayList<String> dates; // Format: YYYY-MM-DD_HH:MM
 	private Color color;
 	private int timeToRemind;
 	private boolean isPriority;
