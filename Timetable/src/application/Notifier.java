@@ -19,6 +19,7 @@ import javafx.stage.StageStyle;
 
 public class Notifier implements Runnable
 {
+	private final String DEFAULT_NOTIFICATION_SOUND = "res/Notification/notification_alert.mp3";
 	private Thread t;
 	private AudioClip notification;
 	
@@ -37,7 +38,7 @@ public class Notifier implements Runnable
 			{
 				Main.user.loadUser();
 				// Get latest sound:
-				notification = new AudioClip(new File(      ).toURI().toString());
+				notification = new AudioClip(new File(DEFAULT_NOTIFICATION_SOUND).toURI().toString());
 				
 				ArrayList<Event> events = Main.user.getEvents();
 				String date = "";
