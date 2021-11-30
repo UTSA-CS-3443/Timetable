@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private final double TIME_LABEL_START_Y = 45.0;
 	private final double TIME_DESC_GAP = 5.0;
 	private final double DESC_GAP = 30.0;
+	private final Font SIDEPANEL_FONT = Font.font("Arial", FontWeight.BOLD, 15);
 	
 	// These are the circles behind the date numbers:
 	@FXML
@@ -515,7 +517,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			// Get the description label correctly formatted:
 			Label curEventDesc = new Label();
 			curEventDesc.setText(curEvents.get(i).getDesc());
-			curEventDesc.setFont(new Font("Arial", 12));
+			curEventDesc.setFont(SIDEPANEL_FONT);
 			curEventDesc.setTextFill(curEvents.get(i).getColor());
 			
 			// Get time label correctly formatted:
@@ -538,7 +540,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 			{
 				curEventTime.setText(curEvents.get(i).getDates().get(0).split("_")[1]);		//removed +"PM"
 			}
-			curEventTime.setFont(new Font("Arial", 12));
+			curEventTime.setFont(SIDEPANEL_FONT);
 			curEventTime.setTextFill(curEvents.get(i).getColor());
 			
 			// Position labels:
