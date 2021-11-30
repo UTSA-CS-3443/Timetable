@@ -5,7 +5,8 @@ package application.model;
 /**
  * The type Settings.
  */
-public class Settings{   //Removed implements serializable statement   COMMENTED BY BRIAN
+public class Settings{
+	private final String DEFAULT_NOTIFICATION_SOUND = "res/Notification/notification_alert.mp3";
     /**
 	 * 
 	 */
@@ -21,9 +22,7 @@ public class Settings{   //Removed implements serializable statement   COMMENTED
     /**
      * The constant alarmSound.
      */
-    //public static String alarmSound; // Path to audio file; Add default
-
-    //public static int priorityInterval;
+    public static String alarmSound;
 
     /**
      * Instantiates a new Settings.
@@ -31,12 +30,14 @@ public class Settings{   //Removed implements serializable statement   COMMENTED
     public Settings() {
     	desktopNotifi = false;
     	isMuted = false;
+    	
         return;
     }
     
     public Settings(boolean desktopNot, boolean muted) {
     	desktopNotifi = desktopNot;
     	isMuted = muted;
+    	alarmSound = this.DEFAULT_NOTIFICATION_SOUND;
         return;
     }
 
@@ -45,18 +46,18 @@ public class Settings{   //Removed implements serializable statement   COMMENTED
      *
      * @return the alarmSound
      */
-    /*public String getAlarmSound() {
+    public String getAlarmSound() {
         return alarmSound;
-    }*/
+    }
 
     /**
      * Sets alarm sound.
      *
      * @param alarmSound the alarmSound to set
      */
-    /*public void setAlarmSound(String alarmSound) {
+    public void setAlarmSound(String alarmSound) {
         Settings.alarmSound = alarmSound;
-    }*/
+    }
 
     /**
      * Gets is muted.
@@ -75,24 +76,6 @@ public class Settings{   //Removed implements serializable statement   COMMENTED
     public void setIsMuted(Boolean isMuted) {
         this.isMuted = isMuted;
     }
-
-    /**
-     * Gets priority interval.
-     *
-     * @return the priorityInterval
-     */
-    /*public int getPriorityInterval() {
-        return priorityInterval;
-    }*/
-
-    /**
-     * Sets priority interval.
-     *
-     * @param priorityInterval the priorityInterval to set
-     */
-    /*public void setPriorityInterval(int priorityInterval) {
-        Settings.priorityInterval = priorityInterval;
-    }*/
 
     /**
      * Gets desktop notifi.
