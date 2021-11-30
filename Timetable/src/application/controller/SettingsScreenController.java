@@ -82,10 +82,22 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     {
     	FileChooser file = new FileChooser();
     	file.setTitle("Choose Sound File");
+    	// Restrict to common audio file types:
+    	file.getExtensionFilters().addAll(
+    			new FileChooser.ExtensionFilter("MP3 Files", "*.mp3"),
+    			new FileChooser.ExtensionFilter("WAV Files", "*.wav"),
+    			new FileChooser.ExtensionFilter("M4A Files", "*.m4a"),
+    			new FileChooser.ExtensionFilter("OGG Files", "*.ogg"),
+    			new FileChooser.ExtensionFilter("WMA Files", "*.wma"),
+    			new FileChooser.ExtensionFilter("AAC Files", "*.aac")
+    			);
+    	
     	File soundFile = file.showOpenDialog(Main.stage);
-    	System.out.println(soundFile.toString());
-    	Main.user.getSettings().setAlarmSound(soundFile.toString());
-    	// TODO: Implement saving sound file.
+    	if (soundFile != null)
+    	{
+	    	Main.user.getSettings().setAlarmSound(soundFile.toString());
+	    	// TODO: Implement saving sound file.
+    	}
     }
 
 
