@@ -1,7 +1,5 @@
 package application.model;
 
-//import java.io.Serializable;   COMMENTED BY BRIAN
-
 /**
  * The type Settings.
  */
@@ -27,13 +25,11 @@ public class Settings {
     	desktopNotifi = false;
     	isMuted = false;
     	alarmSound = DEFAULT_NOTIFICATION_SOUND;
-        return;
     }
     
     public Settings(boolean desktopNot, boolean muted) {
     	desktopNotifi = desktopNot;
     	isMuted = muted;
-        return;
     }
 
     /**

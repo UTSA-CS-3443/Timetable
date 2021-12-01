@@ -1,7 +1,7 @@
 package application.model;
 
 public class Todo{
-	
+
 	private String desc;
 	private int index;
 	

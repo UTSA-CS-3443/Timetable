@@ -208,10 +208,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int firstDayOfMonth; // NOTE: Base 1
 	private int selectedMonth;   // NOTE: Base 1
 	private int selectedYear;
-	//private User user;
 	
 	public void initialize()
 	{
+		
 		// Organize date labels:
 		dateLabels = new ArrayList<ArrayList<Label>>();
 		dateLabels.add(new ArrayList<Label>(Arrays.asList(w1d1, w1d2, w1d3, w1d4, w1d5, w1d6, w1d7)));

@@ -1,7 +1,6 @@
 package application.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import javafx.scene.paint.Color;
 
 public abstract class Calendar
@@ -53,14 +52,6 @@ public abstract class Calendar
 			}
 		}
 		return null;
-	}
-	
-	public void loadEvents()
-	{
-		addEvent(Color.RED, 60, false, "Feed the Dog.", false, false, new ArrayList<String>( Arrays.asList("2021-11-27_12:00", "2021-11-15_12:00")));
-		addEvent(Color.BLUE, 60, false, "Make sure to turn in homework.", false, false, new ArrayList<String>( Arrays.asList("2021-11-21_12:00", "2021-11-15_12:00")));
-		addEvent(Color.GREEN, 60, false, "Test3", false, false, new ArrayList<String>( Arrays.asList("2021-10-1_12:00", "2021-11-15_12:00")));
-		addEvent(Color.PURPLE, 60, false, "Test4", false, false, new ArrayList<String>( Arrays.asList("2021-11-15_12:00", "2021-08-7_12:00", "2021-08-29_12:00")));
 	}
 
 	/**

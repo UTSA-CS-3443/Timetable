@@ -27,7 +27,7 @@ public class Notifier implements Runnable
 	public void run() 
 	{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
-		LocalDateTime now;  
+		LocalDateTime now;
 		LocalDateTime eventDate;
 		String before = "";
 		
@@ -47,7 +47,7 @@ public class Notifier implements Runnable
 				month = Integer.valueOf(dateString[0].split("-")[1]);
 				year = Integer.valueOf(dateString[0].split("-")[0]);
 				hour = Integer.valueOf(dateString[1].split(":")[0]);
-				minute = Integer.valueOf(dateString[1].split(":")[1]);
+				minute = Integer.valueOf(dateString[1].split(":")[1].split(" ")[0]);
 				
 				eventDate = LocalDateTime.of(year, month, day, hour, minute);
 				if (eventDate.isBefore(now)) // If this date has already occurred:
@@ -69,16 +69,21 @@ public class Notifier implements Runnable
 			message += missedEvents.get(i).get(0).replace("_", " ") + " - " + missedEvents.get(i).get(1) + "\n";
 			missedSizeNotY += 60;
 		}
-		notification = new AudioClip(new File(Main.user.getSettings().getAlarmSound()).toURI().toString());
-		makeDesktopNotification(message, Color.RED, missedSizeNotY);
+		if (missedEvents.size() > 0)
+		{
+			notification = new AudioClip(new File(Main.user.getSettings().getAlarmSound()).toURI().toString());
+			makeDesktopNotification(message, Color.RED, missedSizeNotY);
+		}
 		Main.user.saveUser();
 		
+		// Main loop:
 		while (!Main.killThread)
 		{
 			now = LocalDateTime.now();
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
-				Main.user.loadUser();
+				Main.user.loadUser(); 
+				
 				// Get latest sound:
 				notification = new AudioClip(new File(Main.user.getSettings().getAlarmSound()).toURI().toString());
 				
@@ -101,7 +106,7 @@ public class Notifier implements Runnable
 						curTimeMinutes += Integer.valueOf(curTime[1].split(":")[1]);
 						int dateTimeMinutes = 0;
 						dateTimeMinutes = Integer.valueOf(time.split(":")[0]) * 60;
-						dateTimeMinutes += Integer.valueOf(time.split(":")[1]);
+						dateTimeMinutes += Integer.valueOf(time.split(":")[1].split(" ")[0]);
 						System.out.println("Current time (min): " + curTimeMinutes + " - Date time (min): " + dateTimeMinutes);
 						System.out.println("Current date: " + curTime[0] + " - Event date: " + date);
 						System.out.println("Current time: " + curTime[1] + " - Event time: " + time);
