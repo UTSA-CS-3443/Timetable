@@ -1,23 +1,14 @@
 package application.model;
 
-
-//import java.io.Serializable;  COMMENTED BY BRIAN
 import java.util.ArrayList;
-
 
 public class TodoList{
 
-	/**
-	 * 
-	 */
-	//private static final long serialVersionUID = -2157984073652890059L;     COMMENTED BY BRIAN
 	private ArrayList<Todo> tasks;
-	private int taskID; //taskID is used as an internal variable for indexing tasks.
 	
 	/**
 	 * Class constructor creating new ArrayList to hold Todos.
 	 */
-	
 	public TodoList() {
 		this.tasks = new ArrayList<Todo>();
 	}
@@ -47,12 +38,16 @@ public class TodoList{
 		tasks.get(id).setDesc(desc);
 	}
 	
+	/**
+	 * @param id, an int representing the Todo to be grabbed.
+	 * @return A Todo.
+	 */
 	public Todo getTodo(int id) {
 		return tasks.get(id);
 	}
 
 	/**
-	 * @return tasks, an ArrayList of Todos.
+	 * @return An ArrayList of Todos.
 	 */
 	public ArrayList<Todo> getTasks() {
 		return tasks;
@@ -64,23 +59,11 @@ public class TodoList{
 	public void setTasks(ArrayList<Todo> tasks) {
 		this.tasks = tasks;
 	}
-
-	/**
-	 * @return taskID, the taskID as an integer.
-	 */
-	public int getCurId() {
-		return taskID;
-	}
-
-	/**
-	 * @param taskID, int to set as the taskID.
-	 */
-	public void setCurId(int curId) {
-		this.taskID = curId;
-	}
 	
+	/**
+	 * @return size, an int representing the size of the tasks list.
+	 */
 	public int getListSize() {
 		return tasks.size();
 	}
-
 }
