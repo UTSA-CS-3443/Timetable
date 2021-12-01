@@ -1,20 +1,15 @@
 package application.model;
 
+public class Todo{
 
-public class Todo{ 
-	
-	/**
-	 * 
-	 */
 	private String desc;
-	private boolean isDone;
+	private int index;
 	
 	/**
-	 * Class constructor adding description and setting isDone to false.
+	 * Class constructor adding description.
 	 */
 	public Todo(String desc) {
 		this.desc = desc;
-		isDone = false;
 	}
 	
 	/**
@@ -22,16 +17,8 @@ public class Todo{
 	 */
 	public Todo(String desc, boolean isDone) {
 		this.desc = desc;
-		this.isDone = isDone;
 	}
 	
-	/**
-	 * Checks the Todo off as done by setting isDone to true.
-	 */
-	public void complete() {
-		isDone = true;
-	}
-
 	/**
 	 * @return the description of the Todo as a String.
 	 */
@@ -45,18 +32,18 @@ public class Todo{
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-
+	
 	/**
-	 * @return the boolean representing if the Todo is done or not.
+	 * @return the index od the todo as an int.
 	 */
-	public boolean isDone() {
-		return isDone;
+	public int getIndex() {
+		return index;
 	}
-
+	
 	/**
-	 * @param isDone, the boolean representing if the Todo is done or not.
+	 * @param index, an int representing the index of the todo.
 	 */
-	public void setDone(boolean isDone) {
-		this.isDone = isDone;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 }

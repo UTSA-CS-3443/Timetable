@@ -49,7 +49,7 @@ public class User extends Calendar{
 		    //Saving data part
 		      for(Todo task: todo.getTasks())
 		      {
-		    	  todoWriter.write(task.getDesc() + "," + task.isDone() + "\n");
+		    	  todoWriter.write(task.getDesc() + "," + task.getIndex() + "\n");
 		      } 
 		    //End of saving data part
 		      todoWriter.close();
