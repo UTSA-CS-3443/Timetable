@@ -27,13 +27,11 @@ public class Settings {
     	desktopNotifi = false;
     	isMuted = false;
     	alarmSound = DEFAULT_NOTIFICATION_SOUND;
-        return;
     }
     
     public Settings(boolean desktopNot, boolean muted) {
     	desktopNotifi = desktopNot;
     	isMuted = muted;
-        return;
     }
 
     /**

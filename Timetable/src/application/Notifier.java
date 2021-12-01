@@ -32,7 +32,11 @@ public class Notifier implements Runnable
 		String before = "";
 		
 		// Remove all missed events (dates), notify user.
+		
+		System.out.println("load user in notifier"); //APPLE
+		
 		Main.user.loadUser();
+		
 		now = LocalDateTime.now();
 		String[] curTime = dtf.format(now).toString().split(" ");
 		ArrayList<ArrayList<String>> missedEvents = new ArrayList<ArrayList<String>>();
@@ -78,7 +82,8 @@ public class Notifier implements Runnable
 			now = LocalDateTime.now();
 			if (!before.equals(dtf.format(now).toString())) // If the time has changed by a minute
 			{
-				Main.user.loadUser();
+				Main.user.loadUser(); 
+				
 				// Get latest sound:
 				notification = new AudioClip(new File(Main.user.getSettings().getAlarmSound()).toURI().toString());
 				
