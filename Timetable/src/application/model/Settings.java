@@ -1,7 +1,5 @@
 package application.model;
 
-//import java.io.Serializable;   COMMENTED BY BRIAN
-
 /**
  * The type Settings.
  */

@@ -1,14 +1,11 @@
 package application.controller;
 
-import java.util.ArrayList;
-
 import application.Main;
 import application.model.Todo;
 import application.model.TodoList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;

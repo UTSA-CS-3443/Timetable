@@ -118,8 +118,6 @@ public class AddEventController implements EventHandler<ActionEvent>
 		Main.user.saveUser();
 		Main.sceneSwitcher("CalendarScreen.fxml");
 		
-		
-		//User.setSerializeUser(user);   COMMENTED BY BRIAN
 	}
 	
 	public void backClicked(MouseEvent event)
