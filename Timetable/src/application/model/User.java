@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import application.Main;
 import javafx.scene.paint.Color;
 
 /**
@@ -29,7 +30,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
     
     public void saveUser()
     {
-    	
+    	System.out.println("In save user...\n");
     	//---------------------------------------------------------------------------------------------
     	//TodoList Related-----------------------------------------------------------------------------
     	//---------------------------------------------------------------------------------------------
@@ -103,6 +104,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		      System.out.println("An error occurred while attempting to create the Events file.");
 		      e.printStackTrace();
 		    }
+    	
 		
 		try {
 		      FileWriter eventsWriter = new FileWriter("Events.txt");
@@ -115,6 +117,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		    		  dateConcat += date + "-->";
 		    	  }
 		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
+		    	  dateConcat = "";
 		      }
 		      
 		    //End of saving data part
@@ -132,6 +135,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
     
     public void loadUser()
     {
+    	System.out.println("In load user...\n");
     	
     	//---------------------------------------------------------------------------------------------
     	//TodoList Related-----------------------------------------------------------------------------
@@ -225,7 +229,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		        Event tempEvent = new Event(tempColor, tempRemindTime, tempPriority, tempDesc, tempCompleted, tempMissed, eventDates);
 		        events.add(tempEvent);
 		      }
-		      this.setEvents(getEvents());;
+		      Main.user.setEvents(events);
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
 		      System.out.println("Events File Not Found while trying to load it.");

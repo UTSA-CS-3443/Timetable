@@ -51,6 +51,7 @@ public class Main extends Application
 	
 	public static void main(String[] args) {
 		user = new User();
+		
 		Main.killThread = false;
 		ExecutorService exe = Executors.newCachedThreadPool();
 		exe.execute(new Notifier());
@@ -58,7 +59,7 @@ public class Main extends Application
 	        public void run() {
 	            killThread = true;
 	        }
-	    }, "Shutdown-thread"));
+	    }, "Shutdown-thread")); 
 		/*Notifier not = new Notifier();
 		not.start();*/
 		launch(args);

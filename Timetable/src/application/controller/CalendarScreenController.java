@@ -212,6 +212,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	
 	public void initialize()
 	{
+		
 		// Organize date labels:
 		dateLabels = new ArrayList<ArrayList<Label>>();
 		dateLabels.add(new ArrayList<Label>(Arrays.asList(w1d1, w1d2, w1d3, w1d4, w1d5, w1d6, w1d7)));
@@ -249,7 +250,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
 		
 		// Load and display events:
+		System.out.println("load user in calendarcontroller");
+		
 		Main.user.loadUser();
+		
 		
 		curCalEvents = new ArrayList<Rectangle>();
 		displayCalEvents();
