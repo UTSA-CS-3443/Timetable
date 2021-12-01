@@ -1,16 +1,12 @@
 package application.model;
 
-
-//import java.io.Serializable;  COMMENTED BY BRIAN
 import java.util.ArrayList;
-
 
 public class TodoList{
 
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = -2157984073652890059L;     COMMENTED BY BRIAN
 	private ArrayList<Todo> tasks;
 	private int taskID; //taskID is used as an internal variable for indexing tasks.
 	

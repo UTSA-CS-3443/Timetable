@@ -60,8 +60,6 @@ public class Main extends Application
 	            killThread = true;
 	        }
 	    }, "Shutdown-thread")); 
-		/*Notifier not = new Notifier();
-		not.start();*/
 		launch(args);
 	}
   

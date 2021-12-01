@@ -208,7 +208,6 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int firstDayOfMonth; // NOTE: Base 1
 	private int selectedMonth;   // NOTE: Base 1
 	private int selectedYear;
-	//private User user;
 	
 	public void initialize()
 	{

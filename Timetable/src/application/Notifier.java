@@ -32,9 +32,6 @@ public class Notifier implements Runnable
 		String before = "";
 		
 		// Remove all missed events (dates), notify user.
-		
-		System.out.println("load user in notifier"); //APPLE
-		
 		Main.user.loadUser();
 		
 		now = LocalDateTime.now();

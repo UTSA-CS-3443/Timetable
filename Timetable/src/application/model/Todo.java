@@ -1,13 +1,11 @@
 package application.model;
 
-//import java.io.Serializable;   COMMENTED BY BRIAN
 
-public class Todo{   // deleted implements serializable statement    COMMENTED BY BRIAN
+public class Todo{ 
 	
 	/**
 	 * 
 	 */
-	//private static final long serialVersionUID = 176106504250255994L;   COMMENTED BY BRIAN
 	private String desc;
 	private boolean isDone;
 	

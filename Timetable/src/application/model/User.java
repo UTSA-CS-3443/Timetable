@@ -10,11 +10,10 @@ import javafx.scene.paint.Color;
 /**
  * The type User.
  */
-public class User extends Calendar{  //Deleted serializable statement   COMMENTED BY BRIAN
+public class User extends Calendar{ 
     /**
 	 * 
 	 */
-	//private static final long serialVersionUID = 3284827858548718129L;   COMMENTED BY BRIAN
 	private String name;
     private Settings settings;
     private TodoList todo;
@@ -108,7 +107,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		
 		try {
 		      FileWriter eventsWriter = new FileWriter("Events.txt");
-		    //Saving data part
+
 		      String dateConcat = "";
 		      for(Event event: this.getEvents())
 		      {
@@ -119,9 +118,7 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
 		    	  dateConcat = "";
 		      }
-		      
-		    //End of saving data part
-		      
+	      
 		      eventsWriter.close();
 		      System.out.println("Successfully wrote to the Events file.");
 		    } catch (IOException e) {
@@ -162,8 +159,6 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
 		      System.out.println("TodoList File Not Found while trying to load it.");
-		      //saveUser();
-		      //e.printStackTrace();
 		    }
     	}
     	
@@ -191,7 +186,6 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
 		      System.out.println("Settings File Not Found while trying to load it.");
-		      //e.printStackTrace();
 		    }
     	
     	
@@ -216,10 +210,9 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		        String tempDesc = eventDataTokens[3];                           //Token 3
 		        boolean tempCompleted = Boolean.valueOf(eventDataTokens[4]);    //Token 4
 		        boolean tempMissed = Boolean.valueOf(eventDataTokens[5]);       //Token 5
-		        
+
 		        String dates = eventDataTokens[6];                              //Token 6
 		        String[] splitDates = dates.split("-->");
-		        //System.out.println(tempColor + " " + tempRemindTime + " " + tempPriority + " " + tempDesc + " " + tempCompleted + " " + tempMissed + " " + dates);
 		        ArrayList<String> eventDates = new ArrayList<String>();
 		        for(String date: splitDates)
 		        {
@@ -233,72 +226,13 @@ public class User extends Calendar{  //Deleted serializable statement   COMMENTE
 		      myReader.close();
 		    } catch (FileNotFoundException e) {
 		      System.out.println("Events File Not Found while trying to load it.");
-		      //Should we create an Events file if not found?
-		      //e.printStackTrace();
+		      
 		    }
     	//---------------------------------------------------------------------------------------------
     	//---------------------------------------------------------------------------------------------
     	//---------------------------------------------------------------------------------------------
     }
-
-    /**
-     * Gets serialize user.     COMMENTED BY BRIAN
-     *
-     * @return the serialize user
-     */
-    /*public static Object getSerializeUser() {
-    	File fileOut = new File("User.txt");
-    	if (fileOut.exists()) 
-    	{
-    		try 
-        	{
-    	        FileInputStream fileInputStream = new FileInputStream("User.txt");
-    	        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-    	        Object obj = objectInputStream.readObject();
-    	        objectInputStream.close();
-    	        return obj;
-        	}
-        	catch (Exception e)
-        	{
-    	       e.printStackTrace();
-        	}
-    	}
-    	else
-    	{
-	    	try 
-	    	{
-	    		FileOutputStream fileOutputStream;
-				fileOutputStream = new FileOutputStream(fileOut);
-				fileOutputStream.close();
-				return (Object) new User();
-	    	}
-	    	catch (Exception e)
-	    	{
-		        e.printStackTrace();
-	    	}
-    	}
-    	return null;
-    }*/
-
-    /**
-     * Sets serialize user.    COMMENTED BY BRIAN
-     *
-     * @param object the object
-     */
-    /*public static void setSerializeUser(Object object) {
-    	try 
-    	{
-	        File fileOut = new File("User.txt");
-	        FileOutputStream fileOutputStream = new FileOutputStream(fileOut);
-	        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-	        objectOutputStream.writeObject(object);
-	        fileOutputStream.close();
-    	}
-    	catch (Exception e)
-    	{
-    		e.printStackTrace();
-    	}
-    }*/
+   
 
     /**
      * Add todo.
