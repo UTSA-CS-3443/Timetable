@@ -13,13 +13,6 @@ public class Todo{
 	}
 	
 	/**
-	 * Class constructor adding description and setting isDone to false.
-	 */
-	public Todo(String desc, boolean isDone) {
-		this.desc = desc;
-	}
-	
-	/**
 	 * @return the description of the Todo as a String.
 	 */
 	public String getDesc() {
