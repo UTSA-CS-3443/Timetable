@@ -4,7 +4,7 @@ A Simple Event and Todo Management Tool, that helps you stay on your personal sc
 
 ## Description
 
-Events can be entered in on any time table that the user wishes, and a static To-Do list is available for general time-insensitive projects. The app would remind the user a set time before the event, or should the user wish to prioritize the event, the app would progressively more aggressively send reminders to the user until the user marks the event as complete. The app would be lightweight, but have pop ups and audio notifications.
+Events can be entered in on any time table that the user wishes, and a static To-Do list is available for general time-insensitive projects. The app will remind the user a set time before the event, or should the user wish to prioritize the event, it will send alerts every 5 minutes after the requested remind time, up until the event time. The app sends reminders to the user about events coming up, and even notify the user when they load the program up and have missed events. The app is meant to be lightweight, but have pop ups and audio notifications.
 
 ## Getting Started
 
@@ -13,14 +13,14 @@ Events can be entered in on any time table that the user wishes, and a static To
 * Java SE 9 and or higher.
 
 
-### Installing
+### Downloading
 
 * Navigate to the Timetable Repository: https://github.com/Anthrac1t3/Project-Timetable
 * Click the "Code" Dropdown for cloning the code, then select your preferred method. (E.g Download Zip, or Copying the link, etc)
 * You now have a copy of the program!
 
 
-### Executing program
+### Installing / Executing
 
 * Once the program is downloaded, you can choose one of two options.
 1. Running the provided executable.
@@ -64,5 +64,5 @@ Common Issues:
 
 ## Acknowledgments
 
-* Professor Amanda Fernandez
+* Professor: Amanda Fernandez
 * Fellow Classmate: Daniel Rodriguez
