@@ -1,25 +1,14 @@
 package application.model;
 
-/**
- * The type Settings.
- */
 public class Settings {
+	
 	private final String DEFAULT_NOTIFICATION_SOUND = "res/Notification/notification_alert.mp3";
-	/**
-     * The constant desktopNotifi.
-     */
     private Boolean desktopNotifi;
-    /**
-     * The constant isMuted.
-     */
     private Boolean isMuted;
-    /**
-     * The constant alarmSound.
-     */
     public static String alarmSound;
 
     /**
-     * Instantiates a new Settings.
+     * Class constructor setting desktopNotifi to false, isMuted to false and alarmSound to the default sound.
      */
     public Settings() {
     	desktopNotifi = false;
@@ -27,63 +16,56 @@ public class Settings {
     	alarmSound = DEFAULT_NOTIFICATION_SOUND;
     }
     
-    public Settings(boolean desktopNot, boolean muted) {
-    	desktopNotifi = desktopNot;
-    	isMuted = muted;
+    /**
+     * Overloaded class constructor setting desktopNotifi and isMuted to passed in values.
+     * 
+     * @param desktopNotifi, a Boolean representing weather or not desktop notifications are enabled.
+     * @param isMuted, a Boolean representing if the app is muted or not.
+     */
+    public Settings(boolean desktopNotifi, boolean isMuted) {
+    	this.desktopNotifi = desktopNotifi;
+    	this.isMuted = isMuted;
     }
 
     /**
-     * Gets alarm sound.
-     *
-     * @return the alarmSound
+     * @return a String representing the alarm sound.
      */
     public String getAlarmSound() {
         return alarmSound;
     }
 
     /**
-     * Sets alarm sound.
-     *
-     * @param alarmSound the alarmSound to set
+     * @param alarmSound, a String representing the alarm sound.
      */
     public void setAlarmSound(String alarmSound) {
         Settings.alarmSound = alarmSound;
     }
 
     /**
-     * Gets is muted.
-     *
-     * @return the isMuted
+     * @return a Boolean representing if the app is muted or not.
      */
     public Boolean getIsMuted() {
         return isMuted;
     }
 
     /**
-     * Sets is muted.
-     *
-     * @param isMuted the isMuted to set
+     * @param isMuted, a Boolean representing if the app is muted or not.
      */
     public void setIsMuted(Boolean isMuted) {
         this.isMuted = isMuted;
     }
 
     /**
-     * Gets desktop notifi.
-     *
-     * @return the desktopNotifi
+     * @return a Boolean representing weather or not desktop notifications are enabled.
      */
     public Boolean getDesktopNotifi() {
         return desktopNotifi;
     }
 
     /**
-     * Sets desktop notifi.
-     *
-     * @param desktopNotifi the desktopNotifi to set
+     * @param desktopNotifi, a Boolean representing weather or not desktop notifications are enabled.
      */
     public void setDesktopNotifi(Boolean desktopNotifi) {
         this.desktopNotifi = desktopNotifi;
     }
-
 }

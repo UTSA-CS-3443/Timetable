@@ -16,6 +16,17 @@ public class Event
 	private boolean isMissed;
 	private String ID;
 	
+	/**
+	 * Class constructor setting the color, timetoremind, ispriority, desc, iscompleted, ismissed and dates.
+	 * 
+	 * @param color, a color to set as the event color.
+	 * @param timeToRemind, an int representing the time to remind the user.
+	 * @param isPriority, a Boolean that states weather or not the event is a priority.
+	 * @param desc, a String of the description of the event.
+	 * @param isCompleted, a Boolean setting weather or not the even has been completed.
+	 * @param isMissed, a Boolean setting weather or not the event was missed.
+	 * @param dates, an ArrayList of dates that the event takes place over.
+	 */
 	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, boolean isCompleted, boolean isMissed, ArrayList<String> dates)
 	{
 		this.color = color;
@@ -30,126 +41,131 @@ public class Event
 		this.ID = (String) dtf.format(now); // Generates an id which is the time of creation. 
 	}
 	
-	
+	/**
+	 * @param date, a String version of the events date.
+	 */
 	public void addDate(String date)
 	{
 		dates.add(date);
 	}
 	
+	/**
+	 * @param date, a String version of the events date to be removed.
+	 */
 	public void removeDate(String date)
 	{
 		dates.remove(date);
 	}
 
 	/**
-	 * @return the dates
+	 * @return an ArrayList of dates that the event spans.
 	 */
 	public ArrayList<String> getDates() {
 		return dates;
 	}
 
 	/**
-	 * @param dates the dates to set
+	 * @param dates, an ArrayList of dates that the event spans.
 	 */
 	public void setDates(ArrayList<String> dates) {
 		this.dates = dates;
 	}
 
 	/**
-	 * @return the color
+	 * @return the events Color.
 	 */
 	public Color getColor() {
 		return color;
 	}
 
 	/**
-	 * @param color the color to set
+	 * @param color, what color the event will be.
 	 */
 	public void setColor(Color color) {
 		this.color = color;
 	}
 
 	/**
-	 * @return the timeToRemind
+	 * @return an int representing the time that the user will be reminded of the event.
 	 */
 	public int getTimeToRemind() {
 		return timeToRemind;
 	}
 
 	/**
-	 * @param timeToRemind the timeToRemind to set
+	 * @param timeToRemind, an int representing the time that the user will be reminded of the event.
 	 */
 	public void setTimeToRemind(int timeToRemind) {
 		this.timeToRemind = timeToRemind;
 	}
 
 	/**
-	 * @return the isPriority
+	 * @return the isPriority the Boolean telling whether or not the event is a priority.
 	 */
 	public Boolean getIsPriority() {
 		return isPriority;
 	}
 
 	/**
-	 * @param isPriority the isPriority to set
+	 * @param isPriority, the Boolean telling whether or not the event is a priority.
 	 */
 	public void setIsPriority(Boolean isPriority) {
 		this.isPriority = isPriority;
 	}
 
 	/**
-	 * @return the desc
+	 * @return a String description of the event.
 	 */
 	public String getDesc() {
 		return desc;
 	}
 
 	/**
-	 * @param desc the desc to set
+	 * @param desc, a String description of the event.
 	 */
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
 
 	/**
-	 * @return the isCompleted
+	 * @return a Boolean telling whether or not the event was completed.
 	 */
 	public Boolean getIsCompleted() {
 		return isCompleted;
 	}
 
 	/**
-	 * @param isCompleted the isCompleted to set
+	 * @param isCompleted, a Boolean telling whether or not the event was completed.
 	 */
 	public void setIsCompleted(Boolean isCompleted) {
 		this.isCompleted = isCompleted;
 	}
 
 	/**
-	 * @return the isMissed
+	 * @return a Boolean telling whether or not the event was missed.
 	 */
 	public Boolean getIsMissed() {
 		return isMissed;
 	}
 
 	/**
-	 * @param isMissed the isMissed to set
+	 * @param isMissed, a Boolean telling whether or not the event was missed.
 	 */
 	public void setIsMissed(Boolean isMissed) {
 		this.isMissed = isMissed;
 	}
 
 	/**
-	 * @return the iD
+	 * @return a String representing the event ID.
 	 */
 	public String getID() {
 		return ID;
 	}
 
 	/**
-	 * @param iD the iD to set
+	 * @param ID, a String representing the event ID.
 	 */
-	public void setID(String iD) {
-		ID = iD;
+	public void setID(String ID) {
+		this.ID = ID;
 	}
 }

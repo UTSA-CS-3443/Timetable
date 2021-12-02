@@ -49,7 +49,7 @@ public class User extends Calendar{
 		    //Saving data part
 		      for(Todo task: todo.getTasks())
 		      {
-		    	  todoWriter.write(task.getDesc() + "," + task.getIndex() + "\n");
+		    	  todoWriter.write(task.getDesc() + "\n");
 		      } 
 		    //End of saving data part
 		      todoWriter.close();
@@ -144,12 +144,7 @@ public class User extends Calendar{
 		      ArrayList<Todo> tempTodoList = new ArrayList<Todo>();
 		      
 		      while (myReader.hasNextLine()) {
-		        String todoData = myReader.nextLine();
-		        String[] splitTodoData = todoData.split(",");
-		        boolean taskCompleted;
-		        taskCompleted = (splitTodoData[1].equals("true")) ? true:false;
-
-		        Todo task = new Todo(splitTodoData[0], taskCompleted);
+		        Todo task = new Todo(myReader.nextLine());
 		        tempTodoList.add(task);
 
 		      }
