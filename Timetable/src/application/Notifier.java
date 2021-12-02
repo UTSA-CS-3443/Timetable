@@ -23,7 +23,10 @@ public class Notifier implements Runnable
 	private Thread t;
 	private AudioClip notification;
 	
-	@Override
+	/**
+	 * Starts the notification thread. The thread collects all missed event dates, removes them, and notifies the user.
+	 * Then, the thread loops for the duration of the program and alerts the user is an event happens. 
+	 */
 	public void run() 
 	{
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
@@ -139,6 +142,9 @@ public class Notifier implements Runnable
 		}
 	}
 	
+	/**
+	 * Spools up the thread, making sure there are no duplicates.
+	 */
 	public void start()
 	{
 		if (t == null)
@@ -148,6 +154,13 @@ public class Notifier implements Runnable
 		}
 	}
 	
+	/**
+	 * Creates a new window as a desktop notification.
+	 * 
+	 * @param message The text to be displayed.
+	 * @param color The color of the text.
+	 * @param sizeY How large the window should be in the y axis.
+	 */
 	private void makeDesktopNotification(String message, Color color, int sizeY)
 	{
 		if (Main.user.getSettings().getDesktopNotifi())
