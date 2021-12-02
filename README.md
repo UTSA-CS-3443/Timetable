@@ -60,6 +60,7 @@ Common Issues:
    * Fixing the aforementioned Common Issues.
    * When you click a day, then Add Event, it will use the selected date for the Start Date and End Date fields.
    * Enhancing the Interface Design, to give it a more Modern feel.
+   * Adding in compatibility with common calendar file types so that the user can import their Google calendar (or any) if they would like.
 
 
 ## Acknowledgments
