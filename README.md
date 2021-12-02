@@ -10,7 +10,7 @@ Events can be entered in on any time table that the user wishes, and a static To
 
 ### Dependencies
 
-* Windows 10
+* Java SE 9 and or higher.
 
 
 ### Installing
