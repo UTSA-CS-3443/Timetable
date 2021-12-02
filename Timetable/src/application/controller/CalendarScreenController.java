@@ -245,8 +245,13 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		
 		// Select currentDate:
 		selectedDay = Integer.valueOf(date[2]);
-		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStrokeWidth(2);
-		dateCircles.get((selectedDay / 7)).get((selectedDay) % 7).setStroke(Color.RED);
+		int selectedColPos = (this.firstDayOfMonth + ((selectedDay % 7) - 1)) % 7; // Column position in calendar
+		if (selectedColPos == 0)
+		{
+			selectedColPos = 7;
+		}
+		dateCircles.get(((selectedDay + (this.firstDayOfMonth - 2)) / 7)).get(selectedColPos - 1).setStrokeWidth(2);
+		dateCircles.get(((selectedDay + (this.firstDayOfMonth - 2)) / 7)).get(selectedColPos - 1).setStroke(Color.RED);
 		
 		// Load and display events:
 		Main.user.loadUser();
