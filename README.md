@@ -22,9 +22,8 @@ Events can be entered in on any time table that the user wishes, and a static To
 
 ### Installing / Executing
 
-* Once the program is downloaded, you can choose one of two options.
-1. Running the provided executable.
-2. Opening and running the program in an IDE (E.g Eclipse, Intellij)
+* Once the program is downloaded, you can follow the below steps to get it started.
+* Opening and running the program in an IDE (E.g Eclipse, Intellij)
 * Ensure to add the below line of text into your vim arguments in the IDE (Eclipse):
 * Click Run, then Run Configurations
 * Navigate to the Arguments tab, then the VM Arguments section.
