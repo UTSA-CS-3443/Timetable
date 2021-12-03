@@ -19,9 +19,9 @@ public class TodoListController{
 	@FXML
 	private GridPane gridPane;
 	@FXML
-	private Button addTodo;
+	private Button addTodo = new Button();
 	@FXML
-	private TextField addText;
+	private TextField addText = new TextField();
 	
 	/**
 	 * Initializer that loads the user, creates the gridpane and then calls the updateTodo function to fill the gridpane.
@@ -30,8 +30,6 @@ public class TodoListController{
 	public void initialize() {
 		Main.user.loadUser();
 		gridPane = new GridPane();		
-		addTodo = new Button();
-		addText = new TextField();
 		updateTodo(Main.user.getTodo());
 	}
 	

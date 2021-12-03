@@ -7,13 +7,7 @@ import java.util.Scanner;
 import application.Main;
 import javafx.scene.paint.Color;
 
-/**
- * The type User.
- */
 public class User extends Calendar{ 
-    /**
-	 * 
-	 */
 	private String name;
     private Settings settings;
     private TodoList todo;
@@ -27,6 +21,12 @@ public class User extends Calendar{
         this.todo = new TodoList();
     }
     
+    /**
+     * Saves the user object to file in three separate files:
+     * - Settings.txt : Holds the values for settings.
+     * - Events.txt   : Holds the events the user has created.
+     * - TodoList.txt : Holds the todos the user has created.
+     */
     public void saveUser()
     {
     	//---------------------------------------------------------------------------------------------
@@ -129,9 +129,14 @@ public class User extends Calendar{
 		//---------------------------------------------------------------------------------------------
     }
     
+    /**
+     * Loads the data found in the following files into current user:
+     * - Settings.txt : Holds the values for settings.
+     * - Events.txt   : Holds the events the user has created.
+     * - TodoList.txt : Holds the todos the user has created.
+     */
     public void loadUser()
     {
-    	
     	//---------------------------------------------------------------------------------------------
     	//TodoList Related-----------------------------------------------------------------------------
     	//---------------------------------------------------------------------------------------------
