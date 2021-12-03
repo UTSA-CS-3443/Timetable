@@ -23,7 +23,7 @@ Events can be entered in on any time table that the user wishes, and a static To
 ### Installing / Executing
 
 * Once the program is downloaded, you can follow the below steps to get it started.
-* Opening and running the program in an IDE (E.g Eclipse, Intellij)
+* Opening and running the program in Eclipse
 * Ensure to add the below line of text into your vim arguments in the IDE (Eclipse):
 * Click Run, then Run Configurations
 * Navigate to the Arguments tab, then the VM Arguments section.
@@ -40,6 +40,7 @@ Common Issues:
 * Creating too long of Todo statements to where they drift off the page.
 * Creating Events with an End Date that is before the Start Date. (Program allows the addition of the event, but will not display on Calendar)
 * Creating too many events on one day will start to overlap the colored event tiles from different days below it.
+* Leap years will cause strange behavior, since they are not currently handled.
 
 
 ## Authors
