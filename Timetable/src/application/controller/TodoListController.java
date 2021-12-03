@@ -19,9 +19,9 @@ public class TodoListController{
 	@FXML
 	private GridPane gridPane;
 	@FXML
-	private Button addTodo = new Button();
+	private Button addTodo;
 	@FXML
-	private TextField addText = new TextField();
+	private TextField addText;
 	
 	/**
 	 * Initializer that loads the user, creates the gridpane and then calls the updateTodo function to fill the gridpane.
@@ -30,14 +30,17 @@ public class TodoListController{
 	public void initialize() {
 		Main.user.loadUser();
 		gridPane = new GridPane();		
+		addTodo = new Button();
+		addText = new TextField();
 		updateTodo(Main.user.getTodo());
 	}
 	
 	/**
-	 * @param e, a MouseEvent.
 	 * Adds a todo to the users list of todos using the text in the textField as the todo description.
 	 * Calls updateTodo to update the todo list.
 	 * Resets the text field and save the user.
+	 * @param e, a MouseEvent.
+	 * 
 	 */
 	@FXML
 	public void addTodoFromButton(MouseEvent e) {
@@ -50,8 +53,8 @@ public class TodoListController{
 	}
 	
 	/**
-	 * @param e, a MouseEvent.
 	 * Calls the scenSwitcher method in main to take the view back to the calendar.
+	 * @param e, a MouseEvent.
 	 */
 	@FXML
 	public void goBack(MouseEvent e) {
@@ -59,10 +62,10 @@ public class TodoListController{
 	}
 	
 	/**
-	 * @param index, an int representing which todo we are adding.
-	 * @param todo, a todo to be added to the list.
 	 * Creates a JavaFX element from a todo and assigns it an id to be addressed by and sets the evenhandler.
 	 * Adds the button and the text to a row in the gridpane.
+	 * @param index, an int representing which todo we are adding.
+	 * @param todo, a todo to be added to the list.
 	 */
 	public void addTodoFromList(int index, Todo todo) {
 		Label label = new Label("	" + todo.getDesc());
@@ -82,10 +85,10 @@ public class TodoListController{
 	}
 	
 	/**
-	 * @param e, a MouseEvent.
 	 * Extracts the button object from the MouseEvent and then gets the id of that button.
 	 * Uses the buttons id to find the correct todo in the users todo list and then removes it.
 	 * Calls the updateTodo method to refresh the gridpane and then saves the user data.
+	 * @param e, a MouseEvent.
 	 */
 	public void removeTodo(MouseEvent e) {
 		Button button = (Button)e.getSource();
@@ -97,10 +100,10 @@ public class TodoListController{
 	}
 	
 	/**
-	 * @param tasks, a TodoList
 	 * Clears the gridpane.
 	 * Loops through the todolist, calling addTodoFromList on every single todo in the list.
 	 * Sets the gridpane as the scrollpane content so that the new todo list will be displayed.
+	 * @param tasks, a TodoList
 	 */
 	public void updateTodo(TodoList todoList) {
 		gridPane.getChildren().clear();

@@ -209,6 +209,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	private int selectedMonth;   // NOTE: Base 1
 	private int selectedYear;
 	
+	/**
+	 * Sets up calendar screen.
+	 * Selects current day.
+	 */
 	public void initialize()
 	{
 		
@@ -268,21 +272,37 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 	{
 	}
 	
+	/**
+	 * Switches to settings screen.
+	 * @param event
+	 */
 	public void handleSettings(MouseEvent event)
 	{
 		Main.sceneSwitcher("Settings.fxml");
 	}
 	
+	/**
+	 * Switches to todolist screen.
+	 * @param event
+	 */
 	public void handleTodo(MouseEvent event)
 	{
 		Main.sceneSwitcher("TodoList.fxml");
 	}
 	
+	/**
+	 * Switches to add screen.
+	 * @param event
+	 */
 	public void handleAdd(MouseEvent event)
 	{
 		Main.sceneSwitcher("AddEvent.fxml");
 	}
 	
+	/**
+	 * Handles switching the month.
+	 * @param event
+	 */
 	public void handleArrow(MouseEvent event)
 	{
 		if (event.getSource() == leftArrow)
@@ -312,6 +332,10 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		displayDayPanelEvents();
 	}
 	
+	/**
+	 * Changes the selected date to the one the user selects.
+	 * @param event
+	 */
 	public void handleDateSelection(MouseEvent event)
 	{
 		
@@ -370,6 +394,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 	}
 	
+	/**
+	 * Removes the selected date, and removes all numbers on the calendar.
+	 */
 	private void resetCalDates()
 	{
 		for (int i = 0; i < dateLabels.size(); i++)
@@ -383,6 +410,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		// Select selected day:
 	}
 	
+	/**
+	 * Removes all current events displayed on the calendar.
+	 */
 	private void resetEvents()
 	{
 		for (int i = 0; i < calendarPane.getChildren().size(); i++)
@@ -399,6 +429,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		return;
 	}
 	
+	/**
+	 * Removes all current events displayed on the side panel.
+	 */
 	private void resetSidePanelEvents()
 	{
 		for (int i = 0; i < sidePanel.getChildren().size(); i++)
@@ -415,6 +448,13 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		return;
 	}
 	
+	/**
+	 * Sets the correct dates on the correct calendar position for the month.
+	 * Does not account for leap year.
+	 * 
+	 * @param month The month the calendar is set to. 
+	 * @param year The year the calendar is set to.
+	 */
 	private void setCalendarMonth(int month, int year)
 	{
 		monthLabel.setText(monthNames[month - 1]);
@@ -422,7 +462,7 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		
 		Calendar cal = new GregorianCalendar(year, month - 1, 1);
 		resetCalDates();
-		int numDayOfMonth = monthDayNums[month - 1]; // TODO check for leapyear
+		int numDayOfMonth = monthDayNums[month - 1];
 		int _DOW = cal.get(Calendar.DAY_OF_WEEK);
 		firstDayOfMonth = _DOW;
 		int weekCount = 1;
@@ -438,6 +478,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 	}
 	
+	/**
+	 * Displays the events as colored bars on the calendar.
+	 */
 	private void displayCalEvents() 
 	{
 	
@@ -496,6 +539,9 @@ public class CalendarScreenController implements EventHandler<ActionEvent>
 		}
 	}
 	
+	/**
+	 * Displays the events on the side panel.
+	 */
 	private void displayDayPanelEvents()
 	{
 		resetSidePanelEvents();

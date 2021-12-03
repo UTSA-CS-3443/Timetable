@@ -52,8 +52,10 @@ public class AddEventController implements EventHandler<ActionEvent>
 	@FXML
 	private Label mandatoryFieldLabel;
 	
-	//private User user;   COMMENTED BY BRIAN
-	
+	/**
+	 * Sets up the field values to be used in the add screen. 
+	 * This allows the start time for an event to be every five minutes starting from 12:00 AM till 11:55 PM.
+	 */
 	public void initialize()
 	{
 		remindHours.setItems(FXCollections.observableArrayList("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"));
@@ -65,11 +67,14 @@ public class AddEventController implements EventHandler<ActionEvent>
 	{
 	}
 	
+	/**
+	 * Handles the add event button. 
+	 * 
+	 * @param event
+	 */
 	public void addEventClicked(MouseEvent event)
 	{
-		//User user = new User();
 		Main.user.loadUser();
-		//user = (User) User.getSerializeUser();   COMMENTED BY BRIAN
 		
 		//This section checks all mandatory fields have been filled out. Throws label error if not.
 		int mandatoryFields = 0;
@@ -120,6 +125,10 @@ public class AddEventController implements EventHandler<ActionEvent>
 		
 	}
 	
+	/**
+	 * Switches back to calendar screen.
+	 * @param event
+	 */
 	public void backClicked(MouseEvent event)
 	{
 		Main.sceneSwitcher("CalendarScreen.fxml");

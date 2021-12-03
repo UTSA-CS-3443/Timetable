@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class SettingsScreenController implements EventHandler<ActionEvent>, Initializable {
     private static final String COLOR_STYLE_RED = "-fx-background-color: red";
-    private static final String COLOR_STYLE_GREEN = "fx-background-color: green";
+    private static final String COLOR_STYLE_GREEN = "-fx-background-color: green";
     /**
      * The Desktop notif.
      */
@@ -33,6 +33,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
     private Settings settings;
 
     @Override
+    /**
+     * Handles the button pressed in settings.
+     */
     public void handle(ActionEvent actionEvent) {
         if (actionEvent.getSource() == muteButton) {
             muteButtonToggle();
@@ -78,6 +81,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
         }
     }
     
+    /**
+     * Allows user to select a sound file to be used as the alert sound.
+     */
     private void chooseSound()
     {
     	FileChooser file = new FileChooser();
@@ -102,6 +108,9 @@ public class SettingsScreenController implements EventHandler<ActionEvent>, Init
 
 
     @Override
+    /**
+     * Sets up setting screen.
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	Main.user.loadUser();
     	
