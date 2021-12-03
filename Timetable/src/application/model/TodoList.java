@@ -14,25 +14,25 @@ public class TodoList{
 	}
 	
 	/**
-	 * @param desc, a String that describes what needs to be done.
 	 * Creates the new Todo using the constructor and adds it to the end of the tasks ArrayList.
+	 * @param desc, a String that describes what needs to be done.
 	 */
 	public void addTodo(String desc) {
 		tasks.add(new Todo(desc));
 	}
 	
 	/**
-	 * @param id, an int representing the Todo to be deleted.
 	 * Searches the tasks Arraylist for the todo that needs to be removed and removes it.
+	 * @param id, an int representing the Todo to be deleted.
 	 */
 	public void removeTodo(int id) {
 		tasks.remove(id);
 	}
 	
 	/**
+	 * Searches the tasks Arraylist for the todo that needs to be updated and updates it using the Todo's setDesc method.
 	 * @param id, an int representing the Todo to be updated.
 	 * @param desc, a String that describes what needs to be done.
-	 * Searches the tasks Arraylist for the todo that needs to be updated and updates it using the Todo's setDesc method.
 	 */
 	public void updateTodo(int id, String desc) {
 		tasks.get(id).setDesc(desc);

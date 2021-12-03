@@ -23,6 +23,11 @@ public class Main extends Application
 	
 	
 	@Override
+	/**
+	 * Launches the calendar screen.
+	 * 
+	 * @param primaryStage The main window.
+	 */
 	public void start(Stage primaryStage) 
 	{
 		try 
@@ -55,7 +60,7 @@ public class Main extends Application
 		Main.killThread = false;
 		ExecutorService exe = Executors.newCachedThreadPool();
 		exe.execute(new Notifier());
-		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() { // Tell the thread to kill itself when program closes.
 	        public void run() {
 	            killThread = true;
 	        }
@@ -69,7 +74,7 @@ public class Main extends Application
 	 * The sceneSwitcher method takes in the filename we need to switch to.
 	 * Then handles the switching of the scenes.
 	 * 
-	 * @param switchTo, as a String.
+	 * @param switchTo The path to the .fxml file of the screen. Must start with 'view/'.
 	 *
 	 */
   

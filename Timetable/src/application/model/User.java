@@ -7,13 +7,7 @@ import java.util.Scanner;
 import application.Main;
 import javafx.scene.paint.Color;
 
-/**
- * The type User.
- */
 public class User extends Calendar{ 
-    /**
-	 * 
-	 */
 	private String name;
     private Settings settings;
     private TodoList todo;
@@ -27,6 +21,12 @@ public class User extends Calendar{
         this.todo = new TodoList();
     }
     
+    /**
+     * Saves the user object to file in three separate files:
+     * - Settings.txt : Holds the values for settings.
+     * - Events.txt   : Holds the events the user has created.
+     * - TodoList.txt : Holds the todos the user has created.
+     */
     public void saveUser()
     {
     	//---------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ public class User extends Calendar{
 		    	  {
 		    		  dateConcat += date + "-->";
 		    	  }
-		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
+		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + dateConcat + "\n");
 		    	  dateConcat = "";
 		      }
 	      
@@ -129,9 +129,14 @@ public class User extends Calendar{
 		//---------------------------------------------------------------------------------------------
     }
     
+    /**
+     * Loads the data found in the following files into current user:
+     * - Settings.txt : Holds the values for settings.
+     * - Events.txt   : Holds the events the user has created.
+     * - TodoList.txt : Holds the todos the user has created.
+     */
     public void loadUser()
     {
-    	
     	//---------------------------------------------------------------------------------------------
     	//TodoList Related-----------------------------------------------------------------------------
     	//---------------------------------------------------------------------------------------------
@@ -202,9 +207,8 @@ public class User extends Calendar{
 		        boolean tempPriority = Boolean.valueOf(eventDataTokens[2]);     //Token 2
 		        String tempDesc = eventDataTokens[3];                           //Token 3
 		        boolean tempCompleted = Boolean.valueOf(eventDataTokens[4]);    //Token 4
-		        boolean tempMissed = Boolean.valueOf(eventDataTokens[5]);       //Token 5
 
-		        String dates = eventDataTokens[6];                              //Token 6
+		        String dates = eventDataTokens[5];                              //Token 5
 		        String[] splitDates = dates.split("-->");
 		        ArrayList<String> eventDates = new ArrayList<String>();
 		        for(String date: splitDates)
@@ -212,7 +216,7 @@ public class User extends Calendar{
 		        	eventDates.add(date);
 		        }
 	        		
-		        Event tempEvent = new Event(tempColor, tempRemindTime, tempPriority, tempDesc, tempCompleted, tempMissed, eventDates);
+		        Event tempEvent = new Event(tempColor, tempRemindTime, tempPriority, tempDesc, tempCompleted, eventDates);
 		        events.add(tempEvent);
 		      }
 		      Main.user.setEvents(events);

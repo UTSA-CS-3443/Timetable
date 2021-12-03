@@ -27,7 +27,7 @@ public class Todo{
 	}
 	
 	/**
-	 * @return the index od the todo as an int.
+	 * @return the index of the todo as an int.
 	 */
 	public int getIndex() {
 		return index;
