@@ -114,7 +114,7 @@ public class User extends Calendar{
 		    	  {
 		    		  dateConcat += date + "-->";
 		    	  }
-		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + event.getIsMissed() + "," + dateConcat + "\n");
+		    	  eventsWriter.write(event.getColor() + "," + event.getTimeToRemind() + "," + event.getIsPriority() + "," + event.getDesc() + "," + event.getIsCompleted() + "," + dateConcat + "\n");
 		    	  dateConcat = "";
 		      }
 	      
@@ -202,9 +202,8 @@ public class User extends Calendar{
 		        boolean tempPriority = Boolean.valueOf(eventDataTokens[2]);     //Token 2
 		        String tempDesc = eventDataTokens[3];                           //Token 3
 		        boolean tempCompleted = Boolean.valueOf(eventDataTokens[4]);    //Token 4
-		        boolean tempMissed = Boolean.valueOf(eventDataTokens[5]);       //Token 5
 
-		        String dates = eventDataTokens[6];                              //Token 6
+		        String dates = eventDataTokens[5];                              //Token 5
 		        String[] splitDates = dates.split("-->");
 		        ArrayList<String> eventDates = new ArrayList<String>();
 		        for(String date: splitDates)
@@ -212,7 +211,7 @@ public class User extends Calendar{
 		        	eventDates.add(date);
 		        }
 	        		
-		        Event tempEvent = new Event(tempColor, tempRemindTime, tempPriority, tempDesc, tempCompleted, tempMissed, eventDates);
+		        Event tempEvent = new Event(tempColor, tempRemindTime, tempPriority, tempDesc, tempCompleted, eventDates);
 		        events.add(tempEvent);
 		      }
 		      Main.user.setEvents(events);

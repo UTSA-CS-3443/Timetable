@@ -13,21 +13,19 @@ public class Event
 	private boolean isPriority;
 	private String desc;
 	private boolean isCompleted;
-	private boolean isMissed;
 	private String ID;
 	
 	/**
-	 * Class constructor setting the color, timetoremind, ispriority, desc, iscompleted, ismissed and dates.
+	 * Class constructor setting the color, timetoremind, ispriority, desc, iscompleted, and dates.
 	 * 
 	 * @param color, a color to set as the event color.
 	 * @param timeToRemind, an int representing the time to remind the user.
 	 * @param isPriority, a Boolean that states weather or not the event is a priority.
 	 * @param desc, a String of the description of the event.
 	 * @param isCompleted, a Boolean setting weather or not the even has been completed.
-	 * @param isMissed, a Boolean setting weather or not the event was missed.
 	 * @param dates, an ArrayList of dates that the event takes place over.
 	 */
-	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, boolean isCompleted, boolean isMissed, ArrayList<String> dates)
+	public Event(Color color, int timeToRemind, Boolean isPriority, String desc, boolean isCompleted, ArrayList<String> dates)
 	{
 		this.color = color;
 		this.timeToRemind = timeToRemind;
@@ -35,7 +33,6 @@ public class Event
 		this.desc = desc;
 		this.dates = dates;
 		this.isCompleted = isCompleted;
-		this.isMissed = isMissed;
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();
 		this.ID = (String) dtf.format(now); // Generates an id which is the time of creation. 
@@ -139,20 +136,6 @@ public class Event
 	 */
 	public void setIsCompleted(Boolean isCompleted) {
 		this.isCompleted = isCompleted;
-	}
-
-	/**
-	 * @return a Boolean telling whether or not the event was missed.
-	 */
-	public Boolean getIsMissed() {
-		return isMissed;
-	}
-
-	/**
-	 * @param isMissed, a Boolean telling whether or not the event was missed.
-	 */
-	public void setIsMissed(Boolean isMissed) {
-		this.isMissed = isMissed;
 	}
 
 	/**

@@ -119,7 +119,7 @@ public class AddEventController implements EventHandler<ActionEvent>
 		
 		
 		//Passes this forms data into a new event. Then switches the back to the Calendar screen.
-		Main.user.addEvent(eventColor.getValue(), timeToRemind, eventPriority.isSelected(), descOfEvent.getText(), false, false, days);
+		Main.user.addEvent(eventColor.getValue(), timeToRemind, eventPriority.isSelected(), descOfEvent.getText(), false, days);
 		Main.user.saveUser();
 		Main.sceneSwitcher("CalendarScreen.fxml");
 		
